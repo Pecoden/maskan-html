@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>إدارة
+    المشاريع | مسكن الكيان</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .login-error {
+      margin: 0;
+      padding: 10px;
+      background: #fde8e5;
+      color: #a12d26;
+      border-radius: 8px;
+      font-size: 13px
+    }
+
+    .login-error[hidden] {
+      display: none
+    }
+
+    .export-dialog {
+      max-width: 560px;
+      width: calc(100% - 28px);
+      border: 1px solid #d0ad4b;
+      border-radius: 18px;
+      padding: 0;
+      box-shadow: 0 24px 80px #0006
+    }
+
+    .export-dialog::backdrop {
+      background: #0009;
+      backdrop-filter: blur(5px)
+    }
+
+    .export-dialog form {
+      padding: 30px;
+      display: grid;
+      gap: 16px
+    }
+
+    .export-dialog h2 {
+      margin: 0;
+      color: #17140b
+    }
+
+    .export-dialog p {
+      margin: 0;
+      color: #666;
+      line-height: 1.9
+    }
+
+    .export-dialog label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700
+    }
+
+    .export-dialog input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font: inherit
+    }
+
+    .export-dialog .close {
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      border: 0;
+      background: #f4f1e8;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 22px
+    }
+
+    .export-note {
+      padding: 12px 14px;
+      background: #fff8df;
+      border: 1px solid #ead27c;
+      border-radius: 10px;
+      color: #725a0b;
+      font-size: 13px
+    }
+  </style>
+</head>
+
+<body data-mode="admin">
+  <div id="login" class="login">
+    <form><img src="maskan-logo.png" alt>
+      <h1>دخول الإدارة</h1>
+      <p>مسكن الكيان
+        للمقاولات</p><label>اسم المدير<input id="username" value="Ali Mohammed"
+          autocomplete="username"></label><label>رمز
+        الدخول<input id="password" type="password" inputmode="numeric" placeholder="اكتب 1234"
+          autocomplete="current-password"></label>
+      <p id="loginError" class="login-error" hidden>رمز الدخول غير صحيح. اكتب
+        1234.</p><button class="primary" type="submit">دخول</button><small>رمز
+        الدخول الأولي: 1234</small>
+    </form>
+  </div>
+  <div id="adminApp" hidden>
+    <div class="admin-watermark"><img src="maskan-logo.png" alt></div>
+    <header>
+      <div class="brand header-brand"><span class="header-mark"><img src="maskan-logo.png" alt></span>
+        <div><b>مسكن الكيان</b><small>لوحة الإدارة • Ali
+            Mohammed</small></div>
+      </div>
+      <nav><a href="index.html">موقع
+          العرض</a><button id="logout" class="outline">خروج</button></nav>
+    </header>
+    <section class="platform-update-strip admin-update-strip" id="adminUpdateStrip" role="status" aria-live="polite">
+      <div class="platform-update-inner">
+        <span class="platform-update-icon" aria-hidden="true">↻</span>
+        <div class="platform-update-copy"><small>آخر تعديل محفوظ</small><b id="adminLastUpdate">لم يُسجّل تعديل بعد</b>
+        </div>
+      </div>
+    </section>
+    <main>
+      <section class="company-stats-admin">
+        <div class="company-stats-panel">
+          <div class="title">
+            <div><small>بيانات
+                واجهة العرض</small>
+              <h2>أرقام وإنجازات
+                الشركة</h2>
+            </div>
+          </div>
+          <form id="companyStatsForm" class="company-stats-form">
+            <div class="automatic-stat"><label>عدد
+                المشاريع</label><b id="adminProjectsCount">0</b></div><label>سنوات الخبرة<input name="experienceYears"
+                type="number" min="0" step="1" placeholder="مثال: 12"></label><label>المساحات المنفذة
+              (م²)<input name="executedArea" type="number" min="0" step="1"
+                placeholder="مثال: 250000"></label><label>نسبة الالتزام
+              (%)<input name="commitment" type="number" min="0" max="100" step="1"
+                placeholder="مثال: 96"></label><button class="primary" type="submit">حفظ الأرقام</button>
+            <p id="companyStatsFeedback" class="company-stats-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+      <section class="projects admin">
+        <div class="title">
+          <div><small>إدارة
+              المحتوى</small>
+            <h2>المشاريع</h2>
+          </div><button id="add" class="primary">＋ إضافة مشروع</button>
+        </div>
+        <div class="filters"><input id="search" placeholder="بحث..."><button id="exportHtml" class="primary">تصدير HTML
+            محدث</button><button id="export" class="outline dark">نسخة
+            احتياطية
+            JSON</button><button id="reset" class="danger">استعادة بيانات
+            Excel</button></div>
+        <div class="grid" id="grid"></div>
+      </section>
+    </main>
+    <dialog id="editor"><button class="close">×</button>
+      <form id="editForm">
+        <h2>بيانات
+          المشروع</h2><input type="hidden" name="id">
+        <div class="form-grid"><label>رقم المشروع<input name="code"></label><label>اسم المشروع<input name="name"
+              required></label><label>المالك<input name="owner"></label><label>مدير المشروع<input
+              name="manager"></label><label>الموقع<input name="location"></label><label>النوع<input
+              name="type"></label><label>الحالة<select name="status">
+              <option>قيد
+                التنفيذ</option>
+              <option>مكتمل</option>
+              <option>متوقف</option>
+            </select></label><label>نسبة
+            الإنجاز<input name="progress" type="number" min="0" max="100"></label><label>تاريخ البداية<input
+              name="startDate"></label><label>تاريخ النهاية<input name="endDate"></label><label>تاريخ انتهاء العقد<input
+              name="contractEndDate" type="date"></label><label class="missing-items-field">نواقص المشروع<textarea
+              name="missingItemsText" rows="5" placeholder="اكتب كل نقص في سطر مستقل، مثال:
+اعتماد المخططات
+تحديث الجدول الزمني
+استكمال الضمانات"></textarea><small>تظهر هذه البنود داخل بطاقة تفاصيل
+              المشروع.</small></label><label class="file-upload">إضافة ملفات
+            المشروع<input id="projectFiles" name="projectFiles" type="file" multiple
+              accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.dwg,.dxf,.zip,.rar,image/*"><small>Excel،
+              PDF، Word، DWG، صور أو ملفات مضغوطة</small></label>
+          <div class="current-files"><b>الملفات المرفقة</b>
+            <div id="currentFiles"></div>
+          </div>
+        </div>
+        <div class="actions"><button class="primary">حفظ</button><button type="button" id="delete"
+            class="danger">حذف</button></div>
+      </form>
+    </dialog>
+    <dialog id="exportDialog" class="export-dialog"><button class="close" type="button">×</button>
+      <form id="exportForm">
+        <h2>تصدير نسخة HTML
+          محدثة</h2>
+        <p>سيتم إنشاء ملف عرض مستقل يحتوي على جميع التعديلات
+          الحالية والملفات المرفوعة، ويمكن إرساله وفتحه على جهاز
+          آخر.</p><label>رقم الإصدار<input name="version" value="V35.1" required></label><label>اسم آخر شخص قام
+          بالتعديل<input name="updatedBy" value="Ali Mohammed" required></label>
+        <div class="export-note">تأكد من الضغط على «حفظ» داخل المشروع قبل
+          التصدير.</div>
+        <div class="actions"><button class="primary" type="submit">تنزيل ملف
+            HTML المحدث</button><button class="outline dark" type="button" id="cancelExport">إلغاء</button></div>
+      </form>
+    </dialog>
+  </div>
+  <script src="project-data.js"></script>
+  <script src="export-template.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>

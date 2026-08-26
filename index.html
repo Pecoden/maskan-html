@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="مسكن الكيان للمقاولات - نبني الجودة ونوثق الإنجاز."
+    />
+    <title>مسكن الكيان للمقاولات | نبني الجودة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="interactive.css" />
+    <link rel="stylesheet" href="map-fixes.css" />
+    <link rel="stylesheet" href="about-map.css" />
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="team.css" />
+    <link rel="stylesheet" href="closing-cta.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="mobile-header.css" />
+    <link rel="stylesheet" href="header-logo.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="مسكن الكيان للمقاولات"
+        ><span class="brand-mark"><img src="maskan-logo.png" alt /></span
+        ><span><b>مسكن الكيان</b><small>للمقاولات</small></span></a
+      >
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="فتح القائمة"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+      <nav class="site-nav" id="siteNav">
+        <a href="#about">من نحن</a><a href="#services">خدماتنا</a
+        ><a href="#projects">مشاريعنا</a><a href="#quality">الجودة والسلامة</a
+        ><a href="#team">فريق الإدارة</a><a href="#partners">شركاؤنا وعملاؤنا</a
+        ><a href="#careers">الوظائف</a><a href="#quote">طلب عرض سعر</a
+        ><a href="#contact" class="nav-cta">تواصل معنا</a>
+      </nav>
+      <button class="nav-backdrop" type="button" aria-label="إغلاق القائمة"></button>
+    </header>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-image"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="kicker">
+            مسكن الكيان للمقاولات <span>•</span> Maskan Al Kayan
+          </p>
+          <h1>نبني اليوم،<br /><em>لنصنع أثر الغد.</em></h1>
+          <p class="hero-lead">
+            شركة مقاولات تجمع بين الخبرة، جودة التنفيذ، والالتزام لنحوّل الرؤية
+            إلى مشاريع راسخة.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#projects"
+              >استكشف مشاريعنا <span>←</span></a
+            ><a class="text-link" href="#about">تعرّف علينا <span>↗</span></a>
+          </div>
+        </div>
+        <div class="hero-stamp">
+          <img src="maskan-logo.png" alt="شعار مسكن الكيان" /><b
+            >نبني الجودة<br />ونوثق الإنجاز</b
+          >
+        </div>
+        <div class="hero-foot">
+          <span>01</span><i></i><small>BUILDING<br />WITH PURPOSE</small>
+        </div>
+      </section>
+      <section class="intro section" id="about">
+        <div class="section-label">01 <span>من نحن</span></div>
+        <div class="intro-grid">
+          <div>
+            <p class="kicker dark">عن مسكن الكيان</p>
+            <h2>نضع أساسًا قويًا<br /><em>لكل طموح.</em></h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              مسكن الكيان للمقاولات شركة متخصصة في تنفيذ وإدارة المشاريع، نعمل
+              على تقديم قيمة حقيقية في كل مرحلة من مراحل البناء، ونحوّل متطلبات
+              العميل إلى خطط واضحة ونتائج يمكن الاعتماد عليها.
+            </p>
+            <p>
+              من التخطيط الأولي إلى التسليم، نؤمن أن التفاصيل الصغيرة هي التي
+              تصنع الفرق، وأن الثقة تُبنى بالوضوح والالتزام وجودة العمل. لذلك
+              نعمل بتواصل مستمر، ومتابعة دقيقة، وحرص على أن يعكس كل مشروع رؤيته
+              الخاصة.
+            </p>
+            <p>
+              نطمح إلى أن نكون شريكًا طويل الأمد لعملائنا، وأن نترك في كل موقع
+              أثرًا يليق بالمدينة وسكانها.
+            </p>
+            <a class="under-link" href="#contact"
+              >تحدث مع فريقنا <span>←</span></a
+            >
+          </div>
+        </div>
+        <div class="about-map">
+          <div class="about-map-copy">
+            <p class="kicker dark">نطاق أعمالنا</p>
+            <h3>مشاريعنا قريبة<br />من احتياجاتك.</h3>
+            <p>
+              نحضر في أحياء الرياض بمشاريع سكنية وتجارية تُدار بعناية من البداية
+              حتى التسليم.
+            </p>
+            <a href="#projects">شاهد المشاريع <span>←</span></a>
+          </div>
+          <div class="map-wrap">
+            <div
+              class="map-canvas"
+              id="projectMap"
+              aria-label="خريطة OpenStreetMap تفاعلية لمواقع المشاريع"
+            ></div>
+            <aside class="map-panel" style="display: none">
+              <div class="map-panel-head">
+                <span>المشاريع</span><b id="mapCount">0</b>
+              </div>
+              <div class="map-project-list" id="mapProjectList"></div>
+            </aside>
+          </div>
+        </div>
+        <div class="values">
+          <article>
+            <strong>01</strong>
+            <h3>التزام</h3>
+            <p>
+              نلتزم بالمواعيد والمعايير المتفق عليها، ونحافظ على وضوح التواصل
+              طوال عمر المشروع.
+            </p>
+          </article>
+          <article>
+            <strong>02</strong>
+            <h3>جودة</h3>
+            <p>
+              نصنع فارقًا ملموسًا في كل تفصيلة من المواد إلى التشطيبات والتسليم
+              النهائي.
+            </p>
+          </article>
+          <article>
+            <strong>03</strong>
+            <h3>شراكة</h3>
+            <p>نجاح المشروع يبدأ من فهم احتياج العميل والعمل معه كفريق واحد.</p>
+          </article>
+        </div>
+      </section>
+      <section class="services section dark-section" id="services">
+        <div class="section-label light">02 <span>خدماتنا</span></div>
+        <div class="section-heading">
+          <p class="kicker">حلول متكاملة</p>
+          <h2>من الفكرة<br /><em>إلى الواقع.</em></h2>
+        </div>
+        <div class="service-grid">
+          <article>
+            <span>01</span>
+            <h3>إدارة وتنفيذ المشاريع</h3>
+            <p>
+              إدارة شاملة للمشروع وتنسيق دقيق بين جميع الأطراف لضمان سير العمل
+              بكفاءة.
+            </p>
+            <b>↗</b>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>أعمال المقاولات العامة</h3>
+            <p>
+              تنفيذ أعمال البناء والتشييد وفق متطلبات المشروع وأعلى معايير
+              الجودة.
+            </p>
+            <b>↗</b>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>التطوير العقاري</h3>
+            <p>
+              حلول تطويرية تعزز قيمة الأصول وتترجم الرؤية إلى مجتمعات قابلة
+              للحياة.
+            </p>
+            <b>↗</b>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>التصميم والدراسات</h3>
+            <p>
+              دعم فني ودراسات دقيقة تساعد على اتخاذ القرار الصحيح من البداية.
+            </p>
+            <b>↗</b>
+          </article>
+        </div>
+      </section>
+      <section class="project-showcase" id="projects">
+        <div class="showcase-heading">
+          <div>
+            <span class="kicker dark">من أعمالنا</span>
+            <h2>معرض المشاريع</h2>
+            <p>
+              جولة متتابعة في مشاريع مسكن الكيان، مع عرض اسم المشروع وموقعه
+              ونسبة الإنجاز.
+            </p>
+          </div>
+          <div class="showcase-counter">
+            <b id="showcaseCurrent">01</b><span>/</span
+            ><span id="showcaseTotal">00</span>
+          </div>
+        </div>
+        <div class="showcase-shell" id="projectShowcase">
+          <div class="showcase-visual" aria-live="polite">
+            <div class="showcase-image-layer is-active"></div>
+            <div class="showcase-image-layer"></div>
+            <div class="showcase-image-shade"></div>
+            <div class="showcase-progress-line"><i></i></div>
+            <div class="showcase-caption">
+              <div class="showcase-tags">
+                <span id="showcaseCode">#—</span
+                ><span id="showcaseStatus">—</span>
+              </div>
+              <h3 id="showcaseName">مشاريع مسكن الكيان</h3>
+              <p id="showcaseLocation">الرياض</p>
+            </div>
+          </div>
+          <aside class="showcase-details">
+            <span class="showcase-kicker">مشروع مختار</span>
+            <h3 id="showcaseSideName">مشاريع مسكن الكيان</h3>
+            <div class="showcase-meta">
+              <div><small>الموقع</small><b id="showcaseSideLocation">—</b></div>
+              <div><small>النوع</small><b id="showcaseType">—</b></div>
+              <div>
+                <small>مدير المشروع</small><b id="showcaseManager">—</b>
+              </div>
+              <div>
+                <small>نسبة الإنجاز</small><b id="showcaseProgress">—</b>
+              </div>
+            </div>
+            <div class="showcase-meter"><i id="showcaseMeter"></i></div>
+            <div class="showcase-controls">
+              <button
+                type="button"
+                id="showcasePrev"
+                aria-label="المشروع السابق"
+              >
+                ‹
+              </button>
+              <div
+                class="showcase-dots"
+                id="showcaseDots"
+                aria-label="اختيار مشروع"
+              ></div>
+              <button
+                type="button"
+                id="showcaseNext"
+                aria-label="المشروع التالي"
+              >
+                ›
+              </button>
+            </div>
+            <button type="button" class="showcase-open" id="showcaseOpen">
+              تواصل معنا حول هذا المشروع
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section class="quality section" id="quality">
+        <div class="section-label">05 <span>الجودة والسلامة</span></div>
+        <div class="quality-grid">
+          <div>
+            <p class="kicker dark">مسؤوليتنا في كل خطوة</p>
+            <h2>الجودة ليست مرحلة،<br /><em>بل طريقة عمل.</em></h2>
+          </div>
+          <div class="quality-card">
+            <div class="quality-icon">✦</div>
+            <h3>نظام عمل يضع الإنسان أولًا</h3>
+            <p>
+              نحرص على بيئة عمل آمنة، ومخرجات موثوقة، ومراجعة مستمرة للتفاصيل
+              التي تحمي المشروع وتحقق استدامة نتائجه.
+            </p>
+            <div class="quality-line">
+              <span>جودة التنفيذ</span><i></i><b>100%</b>
+            </div>
+            <div class="quality-line">
+              <span>السلامة</span><i></i><b>أولوية</b>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="team section" id="team">
+        <div class="section-label">05 <span>فريق الإدارة</span></div>
+        <div class="team-intro"><div><p class="kicker dark">خبرة تقود الإنجاز</p><h2>فريق يعرف<br /><em>طريقه.</em></h2></div><p class="body-copy">خلف كل مشروع ناجح فريق يخطط بدقة، يتابع التفاصيل، ويحوّل التحديات إلى قرارات واضحة. في مسكن الكيان تعمل الخبرات الإدارية والفنية كمنظومة واحدة.</p></div>
+        <div class="team-command"><div class="team-profile"><div class="profile-orbit"><span></span><span></span><span></span></div><div class="profile-monogram">م<br /><small>ك</small></div><p class="kicker dark">القيادة التنفيذية</p><h3 id="teamLeadTitle">إدارة تصنع الثقة</h3><p id="teamLeadText">رؤية واضحة، متابعة مستمرة، وقرارات تضع نجاح المشروع في المقدمة.</p><div class="profile-stat"><span>أسلوب العمل</span><b id="teamLeadStat">وضوح من البداية</b></div></div><div class="team-roles"><button class="role-card is-active" type="button" data-title="إدارة المشاريع" data-text="ننسق مراحل المشروع وموارده ومواعيده، لتتحول الخطة إلى تقدم ملموس يمكن متابعته."><span>01</span><strong>إدارة المشاريع</strong><small>تخطيط ومتابعة</small><b>↗</b></button><button class="role-card" type="button" data-title="الإدارة الفنية" data-text="نراجع التفاصيل الفنية ونحافظ على جودة التنفيذ، من الرسومات الأولى حتى أدق أعمال الموقع."><span>02</span><strong>الإدارة الفنية</strong><small>دقة وجودة</small><b>↗</b></button><button class="role-card" type="button" data-title="علاقات العملاء" data-text="نبقى قريبين من العميل ونصغي لاحتياجه، لأن الشراكة الحقيقية تبدأ بتواصل صريح ومستمر."><span>03</span><strong>علاقات العملاء</strong><small>ثقة وشراكة</small><b>↗</b></button><div class="team-progress"><span>منظومة واحدة</span><i><b></b></i><strong>03 أدوار رئيسية</strong></div></div></div>
+      </section>
+      <section class="partners dark-section section" id="partners">
+        <div class="section-label light">06 <span>شركاؤنا وعملاؤنا</span></div>
+        <div class="partners-layout">
+          <div>
+            <p class="kicker">نؤمن بقوة العمل المشترك</p>
+            <h2>شراكات<br /><em>تصنع الفرق.</em></h2>
+          </div>
+          <div class="partner-list">
+            <span>شركاء النجاح</span><b>نحوّل التعاون إلى قيمة مستدامة</b><i></i
+            ><span>عملاؤنا</span><b>نصغي، نخطط، وننجز معًا</b>
+          </div>
+        </div>
+      </section>
+      <section class="quote section" id="quote">
+        <div class="section-label">07 <span>طلب عرض سعر</span></div>
+        <div class="form-layout">
+          <div>
+            <p class="kicker dark">لديك مشروع في ذهنك؟</p>
+            <h2>لنبدأ<br /><em>الحديث.</em></h2>
+            <p class="body-copy">
+              شاركنا تفاصيل مشروعك، وسيتواصل معك فريق مسكن الكيان لمناقشة الخطوة
+              التالية.
+            </p>
+          </div>
+          <form class="contact-form">
+            <label
+              >الاسم الكامل<input
+                type="text"
+                required
+                placeholder="اكتب اسمك" /></label
+            ><label
+              >البريد الإلكتروني<input
+                type="email"
+                required
+                placeholder="name@example.com" /></label
+            ><label
+              >نوع المشروع<select>
+                <option>اختر نوع المشروع</option>
+                <option>سكني</option>
+                <option>تجاري</option>
+                <option>مقاولات عامة</option>
+              </select></label
+            ><label
+              >نبذة عن المشروع<textarea
+                rows="4"
+                placeholder="أخبرنا عن مشروعك"
+              ></textarea></label
+            ><button class="button button-dark" type="submit">
+              إرسال الطلب <span>←</span>
+            </button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+      <section class="careers section" id="careers">
+        <div class="section-label">08 <span>الوظائف</span></div>
+        <div class="careers-layout">
+          <div>
+            <p class="kicker dark">كن جزءًا من القادم</p>
+            <h2>ابنِ مسارك<br /><em>معنا.</em></h2>
+          </div>
+          <div>
+            <p class="body-copy">
+              نبحث دائمًا عن أشخاص شغوفين بالبناء، يقدّرون العمل الجماعي ويؤمنون
+              أن الجودة تبدأ من الإنسان.
+            </p>
+            <a class="button button-outline" href="#contact"
+              >تواصل مع فريقنا <span>↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="contact dark-section section" id="contact">
+        <div class="section-label light">09 <span>تواصل معنا</span></div>
+        <div class="contact-hero"><div><p class="kicker">مسكن الكيان للمقاولات</p><h2>جاهزون<br /><em>للبناء.</em></h2><p class="contact-lead">كل مشروع يبدأ بمحادثة واضحة. أخبرنا بما تخطط له، وسنساعدك في تحديد الخطوة المناسبة.</p></div><div class="contact-status"><i></i><span>نستقبل استفسارات المشاريع</span><b>الرياض · المملكة العربية السعودية</b></div></div>
+        <div class="contact-actions"><article class="contact-card"><span class="contact-card-icon">⌖</span><div><small>موقعنا</small><h3>الرياض</h3><p>المملكة العربية السعودية</p></div><button type="button" class="copy-location" data-copy="الرياض، المملكة العربية السعودية" aria-label="نسخ الموقع">⧉</button><a href="https://www.google.com/maps/search/?api=1&query=Riyadh%2C%20Saudi%20Arabia" target="_blank" rel="noreferrer" aria-label="فتح الموقع على الخريطة">↗</a></article><article class="contact-card"><span class="contact-card-icon">✦</span><div><small>مشروع جديد</small><h3>اطلب عرض سعر</h3><p>شاركنا تفاصيل فكرتك واحتياجك.</p></div><a class="contact-card-link" href="#quote">ابدأ الطلب <span>←</span></a></article><article class="contact-card"><span class="contact-card-icon">+</span><div><small>انضم للفريق</small><h3>الوظائف</h3><p>ابنِ مسارك مع فريق مسكن الكيان.</p></div><a class="contact-card-link" href="#careers">استكشف <span>←</span></a></article></div><p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </section>
+      <section class="closing-cta" aria-labelledby="closingTitle">
+        <div class="closing-cta-image"></div><div class="closing-cta-shade"></div>
+        <div class="closing-cta-content"><p class="kicker">لنبدأ مشروعًا جديدًا</p><h2 id="closingTitle">لديك رؤية؟<br /><em>نحن نبنيها.</em></h2><a class="button button-gold" href="#contact">تواصل معنا <span>←</span></a></div>
+      </section>
+    </main>
+    <footer>
+      <a class="brand" href="#home"
+        ><span class="brand-mark"><img src="maskan-logo.png" alt /></span
+        ><span><b>مسكن الكيان</b><small>للمقاولات</small></span></a
+      >
+      <p>© 2026 مسكن الكيان للمقاولات. جميع الحقوق محفوظة.</p>
+      <a href="#home">العودة للأعلى ↑</a>
+    </footer>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      crossorigin
+    ></script>
+    <script>
+      const toggle = document.querySelector(".menu-toggle"),
+        nav = document.querySelector(".site-nav");
+      const backdrop = document.querySelector(".nav-backdrop");
+      const setMenu = (open) => {
+        nav.classList.toggle("is-open", open);
+        backdrop.classList.toggle("is-visible", open);
+        document.body.classList.toggle("menu-open", open);
+        toggle.setAttribute("aria-expanded", open);
+        toggle.setAttribute("aria-label", open ? "إغلاق القائمة" : "فتح القائمة");
+      };
+      toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+      backdrop.addEventListener("click", () => setMenu(false));
+      document.addEventListener("keydown", (event) => { if (event.key === "Escape") setMenu(false); });
+      nav.addEventListener("click", (event) => {
+        if (event.target.matches("a")) {
+          setMenu(false);
+        }
+      });
+      const sectionLinks = [...nav.querySelectorAll("a[href^='#']")];
+      const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { sectionLinks.forEach((link) => link.classList.toggle("is-current", link.getAttribute("href") === "#" + entry.target.id)); } }), { rootMargin: "-35% 0px -55%", threshold: 0 });
+      sectionLinks.forEach((link) => { const target = document.querySelector(link.getAttribute("href")); if (target) sectionObserver.observe(target); });
+      const showcaseProjects = [
+        {
+          name: "فلل الروضة",
+          location: "الرياض - حي الروضة",
+          type: "سكني",
+          manager: "م/ محمد أحمد",
+          progress: 100,
+          status: "مكتمل",
+          code: "106",
+          image: "project-images/p106.webp",
+        },
+        {
+          name: "مقر الشركة",
+          location: "الرياض",
+          type: "إداري",
+          manager: "م/ محمد أحمد",
+          progress: 100,
+          status: "مكتمل",
+          code: "—",
+          image: "project-images/head-office.webp",
+        },
+        {
+          name: "مشروع المعيزيلة",
+          location: "الرياض - حي المعيزيلة",
+          type: "سكني",
+          manager: "م/ محمد أحمد",
+          progress: 100,
+          status: "مكتمل",
+          code: "—",
+          image: "project-images/al-muaizilah.webp",
+        },
+        {
+          name: "الملز بلوك شرقي",
+          location: "الرياض - حي الملز",
+          type: "تطوير وتنفيذ",
+          manager: "م/ محمد أحمد",
+          progress: 100,
+          status: "مكتمل",
+          code: "—",
+          image: "project-images/al-malaz-east.webp",
+        },
+        {
+          name: "منازل الرمال",
+          location: "الرياض",
+          type: "سكني",
+          manager: "م/ محمد أحمد",
+          progress: 100,
+          status: "مكتمل",
+          code: "—",
+          image: "project-images/sand-homes.webp",
+        },
+      ];
+      const showcase = document.querySelector("#projectShowcase"),
+        layers = [...document.querySelectorAll(".showcase-image-layer")],
+        dots = document.querySelector("#showcaseDots");
+      let showcaseIndex = 0,
+        showcaseLayer = 0,
+        showcaseTimer;
+      document.querySelector("#showcaseTotal").textContent = String(
+        showcaseProjects.length,
+      ).padStart(2, "0");
+      dots.innerHTML = showcaseProjects
+        .map(
+          (_, index) =>
+            `<button type="button" aria-label="المشروع ${index + 1}"></button>`,
+        )
+        .join("");
+      const updateShowcase = (index) => {
+        showcaseIndex =
+          (index + showcaseProjects.length) % showcaseProjects.length;
+        const project = showcaseProjects[showcaseIndex],
+          nextLayer = 1 - showcaseLayer;
+        layers[nextLayer].style.backgroundImage = `url("${project.image}")`;
+        layers[nextLayer].classList.add("is-active");
+        layers[showcaseLayer].classList.remove("is-active");
+        showcaseLayer = nextLayer;
+        document.querySelector("#showcaseCurrent").textContent = String(
+          showcaseIndex + 1,
+        ).padStart(2, "0");
+        document.querySelector("#showcaseCode").textContent =
+          "#" + project.code;
+        document.querySelector("#showcaseStatus").textContent = project.status;
+        document.querySelector("#showcaseName").textContent = project.name;
+        document.querySelector("#showcaseLocation").textContent =
+          "⌖ " + project.location;
+        document.querySelector("#showcaseSideName").textContent = project.name;
+        document.querySelector("#showcaseSideLocation").textContent =
+          project.location;
+        document.querySelector("#showcaseType").textContent = project.type;
+        document.querySelector("#showcaseManager").textContent =
+          project.manager;
+        document.querySelector("#showcaseProgress").textContent =
+          project.progress + "%";
+        document.querySelector("#showcaseMeter").style.width =
+          project.progress + "%";
+        dots
+          .querySelectorAll("button")
+          .forEach((dot, dotIndex) =>
+            dot.classList.toggle("is-active", dotIndex === showcaseIndex),
+          );
+        showcase.classList.remove("is-running");
+        void showcase.offsetWidth;
+        showcase.classList.add("is-running");
+      };
+      const restartShowcase = () => {
+        clearInterval(showcaseTimer);
+        showcaseTimer = setInterval(
+          () => updateShowcase(showcaseIndex + 1),
+          3000,
+        );
+      };
+      updateShowcase(0);
+      restartShowcase();
+      document.querySelector("#showcasePrev").addEventListener("click", () => {
+        updateShowcase(showcaseIndex - 1);
+        restartShowcase();
+      });
+      document.querySelector("#showcaseNext").addEventListener("click", () => {
+        updateShowcase(showcaseIndex + 1);
+        restartShowcase();
+      });
+      dots.querySelectorAll("button").forEach((dot, index) =>
+        dot.addEventListener("click", () => {
+          updateShowcase(index);
+          restartShowcase();
+        }),
+      );
+      showcase.addEventListener("mouseenter", () =>
+        clearInterval(showcaseTimer),
+      );
+      showcase.addEventListener("mouseleave", restartShowcase);
+      document
+        .querySelector("#showcaseOpen")
+        .addEventListener("click", () =>
+          document
+            .querySelector("#quote")
+            .scrollIntoView({ behavior: "smooth" }),
+        );
+      const heroImages = [
+        "project-images/head-office.webp",
+        "project-images/al-muaizilah.webp",
+        "project-images/al-malaz-east.webp",
+        "project-images/sand-homes.webp",
+      ];
+      let heroImageIndex = 0;
+      const heroImage = document.querySelector(".hero-image");
+      setInterval(() => {
+        heroImageIndex = (heroImageIndex + 1) % heroImages.length;
+        heroImage.classList.add("is-changing");
+        setTimeout(() => {
+          heroImage.style.backgroundImage = `url("${heroImages[heroImageIndex]}")`;
+          heroImage.classList.remove("is-changing");
+        }, 450);
+      }, 4500);
+      const mapProjects = [
+        {
+          name: "الازدهار",
+          location: "حي الازدهار",
+          owner: "شركة مسكن ألين العقارية",
+          type: "سكني",
+          status: "مكتمل",
+          coords: [24.773, 46.733],
+        },
+        {
+          name: "فلل التعاون",
+          location: "حي التعاون",
+          owner: "شركة مسكن ألين العقارية",
+          type: "سكني",
+          status: "مكتمل",
+          coords: [24.774, 46.697],
+        },
+        {
+          name: "العقيق (3) فلتين تجارية",
+          location: "حي العقيق",
+          owner: "شركة مسكن سيل العقارية",
+          type: "تجاري",
+          status: "مكتمل",
+          coords: [24.797, 46.628],
+        },
+        {
+          name: "المغرزات",
+          location: "حي المغرزات",
+          owner: "شركة مسكن ألين العقارية",
+          type: "سكني",
+          status: "مكتمل",
+          coords: [24.755, 46.704],
+        },
+        {
+          name: "فلل الروضة",
+          location: "حي الروضة",
+          owner: "شركة مسكن ألين العقارية",
+          type: "سكني",
+          status: "مكتمل",
+          coords: [24.733, 46.759],
+        },
+        {
+          name: "فلل الملز",
+          location: "حي الملز",
+          owner: "شركة مسكن ألين العقارية",
+          type: "سكني",
+          status: "مكتمل",
+          coords: [24.696, 46.727],
+        },
+      ];
+      const map = L.map("projectMap", { scrollWheelZoom: false }).setView(
+        [24.745, 46.7],
+        11,
+      );
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+        maxZoom: 19,
+      }).addTo(map);
+      const list = document.querySelector("#mapProjectList");
+      const showMapProject = (project) => {
+        document
+          .querySelectorAll(".map-project-item")
+          .forEach((item) =>
+            item.classList.toggle(
+              "is-selected",
+              item.dataset.project === project.name,
+            ),
+          );
+        map.setView(project.coords, 13, { animate: true });
+        L.popup({ closeButton: true, offset: [0, -8] })
+          .setLatLng(project.coords)
+          .setContent(
+            '<div class="leaflet-project-popup"><span>موقع مشروع</span><strong>' +
+              project.name +
+              "</strong><small>⌖ " +
+              project.location +
+              "</small><em>" +
+              project.type +
+              " · " +
+              project.status +
+              "</em><b>" +
+              project.owner +
+              "</b></div>",
+          )
+          .openOn(map);
+      };
+      mapProjects.forEach((project) => {
+        const marker = L.circleMarker(project.coords, {
+          radius: 8,
+          fillColor: "#c7a34c",
+          color: "#fff",
+          weight: 3,
+          fillOpacity: 1,
+        }).addTo(map);
+        marker.bindTooltip(project.name, { direction: "top", offset: [0, -8] });
+        marker.on("click", () => showMapProject(project));
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "map-project-item";
+        item.dataset.project = project.name;
+        item.innerHTML =
+          "<span>" +
+          project.name +
+          "</span><small>" +
+          project.location +
+          "</small><b>↗</b>";
+        item.addEventListener("click", () => showMapProject(project));
+        list.append(item);
+      });
+      document.querySelector("#mapCount").textContent = mapProjects.length;
+      const revealObserver = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.15 },
+      );
+      document
+        .querySelectorAll(
+          ".section,.values article,.service-grid article,.project",
+        )
+        .forEach((element) => {
+          element.classList.add("reveal");
+          revealObserver.observe(element);
+        });
+      document
+        .querySelectorAll(".values article,.service-grid article")
+        .forEach((card) =>
+          card.addEventListener("click", () => {
+            card.parentElement
+              .querySelectorAll("article")
+              .forEach((item) => item.classList.remove("is-selected"));
+            card.classList.add("is-selected");
+          }),
+        );
+      document
+        .querySelector(".contact-form")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          event.currentTarget.querySelector(".form-status").textContent =
+            "تم استلام طلبك، وسيتواصل معك فريقنا قريبًا.";
+          event.currentTarget.reset();
+        });
+      document.querySelectorAll(".copy-location").forEach((button) =>
+        button.addEventListener("click", async () => {
+          const status = document.querySelector("#copyStatus");
+          try {
+            await navigator.clipboard.writeText(button.dataset.copy);
+            status.textContent = "تم نسخ الموقع بنجاح.";
+          } catch {
+            status.textContent = "الموقع: " + button.dataset.copy;
+          }
+          window.setTimeout(() => (status.textContent = ""), 2500);
+        }),
+      );
+      const roleCards = document.querySelectorAll(".role-card");
+      const leadTitle = document.querySelector("#teamLeadTitle");
+      const leadText = document.querySelector("#teamLeadText");
+      const leadStat = document.querySelector("#teamLeadStat");
+      roleCards.forEach((card) =>
+        card.addEventListener("click", () => {
+          roleCards.forEach((item) => item.classList.remove("is-active"));
+          card.classList.add("is-active");
+          leadTitle.classList.add("is-swapping");
+          leadText.classList.add("is-swapping");
+          window.setTimeout(() => {
+            leadTitle.textContent = card.dataset.title;
+            leadText.textContent = card.dataset.text;
+            leadStat.textContent = card.querySelector("small").textContent;
+            leadTitle.classList.remove("is-swapping");
+            leadText.classList.remove("is-swapping");
+          }, 180);
+        }),
+      );
+    </script>
+  </body>
+</html>
