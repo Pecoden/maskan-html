@@ -1,1 +1,128 @@
-.about-map{display:grid;grid-template-columns:.72fr 1.28fr;gap:35px;align-items:stretch;margin-top:95px;padding:28px;background:#e9e5da;border-right:4px solid #c7a34c}.about-map-copy{padding:15px 10px;align-self:center}.about-map-copy h3{font-size:clamp(26px,3vw,42px);line-height:1.35;margin:0 0 15px}.about-map-copy p:not(.kicker){color:#716e66;font-size:13px;line-height:2}.about-map-copy>a{display:inline-flex;gap:16px;align-items:center;margin-top:12px;border-bottom:1px solid #c7a34c;padding-bottom:5px;font-weight:700;font-size:13px}.about-map-copy>a span{color:#9b7824;font-size:19px}.about-map .map-wrap{grid-template-columns:1fr;min-height:395px;border:0}.about-map .map-canvas{min-height:395px}.about-map .map-panel{position:absolute;bottom:0;right:0;left:0;z-index:10;max-height:95px;padding:10px 16px;background:#f8f6f0dd;backdrop-filter:blur(5px)}.about-map .map-panel-head{padding:0;border:0}.about-map .map-project-list{display:flex;gap:10px;overflow:auto;margin-top:3px}.about-map .map-project-item{min-width:135px;padding:6px 4px;border-bottom:0}.about-map .map-project-item small{font-size:9px}.about-map .map-project-item b{top:7px}.hero-image{transition:opacity .45s ease,transform 4.5s ease}.hero-image.is-changing{opacity:.15;transform:scale(1.06)}@media(max-width:900px){.about-map{grid-template-columns:1fr;gap:15px;margin-top:60px}.about-map-copy{padding:0}.about-map .map-wrap{min-height:330px}.about-map .map-canvas{min-height:330px}}@media(max-width:680px){.about-map{padding:18px;margin-top:45px}.about-map .map-canvas{height:310px;min-height:310px}.about-map .map-wrap{min-height:310px}.about-map .map-panel{max-height:92px}.about-map .map-project-list{gap:5px}.about-map .map-project-item{min-width:125px}.about-map-copy h3{font-size:30px}}
+.about-map {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 35px;
+  align-items: stretch;
+  margin-top: 95px;
+  padding: 28px;
+  background: #e9e5da;
+  border-right: 4px solid #c7a34c;
+}
+.about-map-copy {
+  padding: 15px 10px;
+  align-self: center;
+}
+.about-map-copy h3 {
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.35;
+  margin: 0 0 15px;
+}
+.about-map-copy p:not(.kicker) {
+  color: #716e66;
+  font-size: 13px;
+  line-height: 2;
+}
+.about-map-copy > a {
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 12px;
+  border-bottom: 1px solid #c7a34c;
+  padding-bottom: 5px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.about-map-copy > a span {
+  color: #9b7824;
+  font-size: 19px;
+}
+.about-map .map-wrap {
+  grid-template-columns: 1fr;
+  min-height: 395px;
+  border: 0;
+}
+.about-map .map-canvas {
+  min-height: 395px;
+}
+.about-map .map-panel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  max-height: 95px;
+  padding: 10px 16px;
+  background: #f8f6f0dd;
+  backdrop-filter: blur(5px);
+}
+.about-map .map-panel-head {
+  padding: 0;
+  border: 0;
+}
+.about-map .map-project-list {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+  margin-top: 3px;
+}
+.about-map .map-project-item {
+  min-width: 135px;
+  padding: 6px 4px;
+  border-bottom: 0;
+}
+.about-map .map-project-item small {
+  font-size: 9px;
+}
+.about-map .map-project-item b {
+  top: 7px;
+}
+.hero-image {
+  transition:
+    opacity 0.45s ease,
+    transform 4.5s ease;
+}
+.hero-image.is-changing {
+  opacity: 0.15;
+  transform: scale(1.06);
+}
+@media (max-width: 900px) {
+  .about-map {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 60px;
+  }
+  .about-map-copy {
+    padding: 0;
+  }
+  .about-map .map-wrap {
+    min-height: 330px;
+  }
+  .about-map .map-canvas {
+    min-height: 330px;
+  }
+}
+@media (max-width: 680px) {
+  .about-map {
+    padding: 18px;
+    margin-top: 45px;
+  }
+  .about-map .map-canvas {
+    height: 310px;
+    min-height: 310px;
+  }
+  .about-map .map-wrap {
+    min-height: 310px;
+  }
+  .about-map .map-panel {
+    max-height: 92px;
+  }
+  .about-map .map-project-list {
+    gap: 5px;
+  }
+  .about-map .map-project-item {
+    min-width: 125px;
+  }
+  .about-map-copy h3 {
+    font-size: 30px;
+  }
+}
