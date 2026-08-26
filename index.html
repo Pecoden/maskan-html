@@ -17,10 +17,14 @@
     <link rel="stylesheet" href="map-fixes.css" />
     <link rel="stylesheet" href="about-map.css" />
     <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="project-status.css" />
     <link rel="stylesheet" href="team.css" />
     <link rel="stylesheet" href="closing-cta.css" />
     <link rel="stylesheet" href="contact.css" />
     <link rel="stylesheet" href="mobile-header.css" />
+    <link rel="stylesheet" href="menu-scroll.css" />
+    <link rel="stylesheet" href="header-logo.css" />
+    <link rel="stylesheet" href="values-icons.css" />
     <link rel="stylesheet" href="header-logo.css" />
     <link rel="stylesheet" href="values-icons.css" />
     <link rel="stylesheet" href="footer-visibility.css" />
@@ -43,7 +47,7 @@
         ☰
       </button>
       <nav class="site-nav" id="siteNav">
-        <a href="about.html">من نحن</a><a href="services.html">خدماتنا</a><a
+        <a href="index.html" class="is-current">الرئيسية</a><a href="about.html">من نحن</a><a href="services.html">خدماتنا</a><a
           href="projects.html">مشاريعنا</a><a href="quality.html">الجودة
           والسلامة</a><a href="team.html">فريق الإدارة</a><a
           href="partners.html">شركاؤنا وعملاؤنا</a><a
@@ -218,7 +222,7 @@
             <h2>معرض المشاريع</h2>
             <p>
               جولة متتابعة في مشاريع مسكن الكيان، مع عرض اسم المشروع وموقعه
-              ونسبة الإنجاز.
+              وحالته الحالية.
             </p>
           </div>
           <div class="showcase-counter">
@@ -248,10 +252,7 @@
               <div><small>الموقع</small><b id="showcaseSideLocation">—</b></div>
               <div><small>النوع</small><b id="showcaseType">—</b></div>
               <div>
-                <small>مدير المشروع</small><b id="showcaseManager">—</b>
-              </div>
-              <div>
-                <small>نسبة الإنجاز</small><b id="showcaseProgress">—</b>
+                <small>حالة المشروع</small><b id="showcaseSideStatus">—</b>
               </div>
             </div>
             <div class="showcase-meter"><i id="showcaseMeter"></i></div>
@@ -472,8 +473,6 @@
           name: "فلل الروضة",
           location: "الرياض - حي الروضة",
           type: "سكني",
-          manager: "م/ محمد أحمد",
-          progress: 100,
           status: "مكتمل",
           code: "106",
           image: "project-images/p106.webp",
@@ -482,8 +481,6 @@
           name: "مقر الشركة",
           location: "الرياض",
           type: "إداري",
-          manager: "م/ محمد أحمد",
-          progress: 100,
           status: "مكتمل",
           code: "—",
           image: "project-images/head-office.webp",
@@ -492,8 +489,6 @@
           name: "مشروع المعيزيلة",
           location: "الرياض - حي المعيزيلة",
           type: "سكني",
-          manager: "م/ محمد أحمد",
-          progress: 100,
           status: "مكتمل",
           code: "—",
           image: "project-images/al-muaizilah.webp",
@@ -502,8 +497,6 @@
           name: "الملز بلوك شرقي",
           location: "الرياض - حي الملز",
           type: "تطوير وتنفيذ",
-          manager: "م/ محمد أحمد",
-          progress: 100,
           status: "مكتمل",
           code: "—",
           image: "project-images/al-malaz-east.webp",
@@ -512,8 +505,6 @@
           name: "منازل الرمال",
           location: "الرياض",
           type: "سكني",
-          manager: "م/ محمد أحمد",
-          progress: 100,
           status: "مكتمل",
           code: "—",
           image: "project-images/sand-homes.webp",
@@ -556,12 +547,11 @@
         document.querySelector("#showcaseSideLocation").textContent =
           project.location;
         document.querySelector("#showcaseType").textContent = project.type;
-        document.querySelector("#showcaseManager").textContent =
-          project.manager;
-        document.querySelector("#showcaseProgress").textContent =
-          project.progress + "%";
-        document.querySelector("#showcaseMeter").style.width =
-          project.progress + "%";
+        const sideStatus = document.querySelector("#showcaseSideStatus");
+        sideStatus.textContent = project.status;
+        sideStatus.className = project.status === "مكتمل"
+          ? "project-status is-complete"
+          : "project-status is-active";
         dots
           .querySelectorAll("button")
           .forEach((dot, dotIndex) =>
