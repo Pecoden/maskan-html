@@ -1,0 +1,17 @@
+﻿@media (max-width: 680px) {
+  .site-nav {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #c7a34c #15140f;
+    padding-bottom: 92px;
+  }
+  .site-nav::-webkit-scrollbar {
+    width: 5px;
+  }
+  .site-nav::-webkit-scrollbar-thumb {
+    background: #c7a34c;
+    border-radius: 5px;
+  }
+}
+

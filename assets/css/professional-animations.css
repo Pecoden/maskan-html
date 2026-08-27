@@ -1,0 +1,350 @@
+﻿@property --deg {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --project-deg {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Hero depth */
+.hero-copy,
+.hero-logo-stage {
+  will-change: transform;
+  transition: transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+.hero-copy {
+  transform: translate3d(
+    calc(var(--hero-x, 0) * -10px),
+    calc(var(--hero-y, 0) * -7px),
+    0
+  );
+}
+.hero-logo-stage {
+  transform: translate3d(
+    calc(var(--hero-x, 0) * 18px),
+    calc(var(--hero-y, 0) * 13px),
+    0
+  );
+}
+.hero-logo img {
+  transition:
+    filter 0.5s ease,
+    transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
+  filter: drop-shadow(
+    calc(var(--hero-x, 0) * -14px) calc(var(--hero-y, 0) * -10px) 20px #0008
+  );
+}
+.hero-actions a {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.hero-actions a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px #0007;
+}
+.hero-actions a::after {
+  content: "";
+  position: absolute;
+  inset: -30% auto -30% -55%;
+  width: 30%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, #fff6, transparent);
+  transition: left 0.55s ease;
+}
+.hero-actions a:hover::after {
+  left: 125%;
+}
+
+/* Dashboard */
+.analytics .kpis article,
+.analytics .panel {
+  transition:
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 0.35s ease;
+}
+.analytics:not(.analytics-in-view) .kpis article,
+.analytics:not(.analytics-in-view) .panel {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.analytics.analytics-in-view .kpis article:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.analytics.analytics-in-view .kpis article:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.analytics.analytics-in-view .kpis article:nth-child(4) {
+  transition-delay: 0.24s;
+}
+.analytics.analytics-in-view .panel:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.analytics.analytics-in-view .panel:nth-child(3) {
+  transition-delay: 0.14s;
+}
+.analytics.analytics-in-view .panel:nth-child(4) {
+  transition-delay: 0.2s;
+}
+.analytics .panel:hover {
+  box-shadow: 0 24px 55px #5c4c2413;
+  transform: translateY(-3px);
+}
+.radial {
+  transition:
+    --deg 1.15s cubic-bezier(0.16, 0.85, 0.25, 1),
+    transform 0.35s ease;
+  box-shadow: 0 20px 45px #9f7a2418;
+}
+.radial:hover {
+  transform: scale(1.025);
+}
+.type-track i,
+.document-track i {
+  transition: width 1s cubic-bezier(0.16, 0.85, 0.25, 1);
+}
+
+/* Project cards and image skeleton */
+.grid .card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.grid .card > * {
+  position: relative;
+  z-index: 2;
+}
+.grid .card.motion-pending {
+  opacity: 0;
+  transform: translateY(34px) scale(0.975);
+}
+.grid .card.motion-pending.motion-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 0.65s var(--card-delay) ease,
+    transform 0.75s var(--card-delay) cubic-bezier(0.16, 0.85, 0.25, 1),
+    box-shadow 0.28s ease,
+    background-size 0.8s ease,
+    background-position 0.8s ease;
+}
+.grid .card.motion-visible:hover {
+  transform: translateY(-7px) scale(1.008);
+  box-shadow: 0 26px 60px #2c261824;
+}
+.project-gauge {
+  transition:
+    --project-deg 1.05s 0.1s cubic-bezier(0.16, 0.85, 0.25, 1),
+    transform 0.35s ease;
+  box-shadow: 0 14px 36px #6a511d20;
+}
+.card:hover .project-gauge {
+  transform: scale(1.045);
+}
+.card.image-loading::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(105deg, #f3f0e8 25%, #fff 43%, #f3f0e8 61%);
+  background-size: 240% 100%;
+  animation: projectShimmer 1.25s linear infinite;
+}
+.card.image-ready::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+.projects .card.project-image-card.image-ready {
+  background-size: cover !important;
+  background-position: center 55% !important;
+  transition:
+    opacity 0.45s ease,
+    transform 0.75s var(--card-delay) cubic-bezier(0.16, 0.85, 0.25, 1),
+    box-shadow 0.28s ease,
+    background-position 1.4s ease !important;
+}
+.projects .card.project-image-card.image-ready:hover {
+  background-position: center 48% !important;
+}
+@keyframes projectShimmer {
+  from {
+    background-position: 180% 0;
+  }
+  to {
+    background-position: -80% 0;
+  }
+}
+
+/* Details modal */
+dialog[open] {
+  transform-origin: center;
+  animation: detailsOpen 0.36s cubic-bezier(0.16, 0.85, 0.25, 1) both;
+  box-shadow: 0 35px 100px #0007;
+}
+dialog[open]::backdrop {
+  animation: backdropIn 0.3s ease both;
+  backdrop-filter: blur(5px);
+}
+dialog.details-closing {
+  animation: detailsClose 0.24s ease both;
+}
+dialog.details-closing::backdrop {
+  animation: backdropOut 0.24s ease both;
+}
+dialog #detailsBody > * {
+  opacity: 0;
+  transform: translateY(15px);
+}
+dialog.details-animate #detailsBody > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.48s ease,
+    transform 0.58s cubic-bezier(0.16, 0.85, 0.25, 1);
+}
+dialog.details-animate #detailsBody > *:nth-child(2) {
+  transition-delay: 0.05s;
+}
+dialog.details-animate #detailsBody > *:nth-child(3) {
+  transition-delay: 0.1s;
+}
+dialog.details-animate #detailsBody > *:nth-child(4) {
+  transition-delay: 0.16s;
+}
+dialog.details-animate #detailsBody > *:nth-child(5) {
+  transition-delay: 0.22s;
+}
+dialog.details-animate #detailsBody > *:nth-child(6) {
+  transition-delay: 0.28s;
+}
+dialog.details-animate #detailsBody > *:nth-child(7) {
+  transition-delay: 0.34s;
+}
+.details-list > div,
+.docs > .doc {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.details-list > div:hover,
+.docs > .doc:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px #4d3a1514;
+  border-color: #cdb97e;
+}
+@keyframes detailsOpen {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes detailsClose {
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+}
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes backdropOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Active navigation */
+header nav a[href^="#"] {
+  position: relative;
+  padding-block: 11px;
+  transition: color 0.25s ease;
+}
+header nav a[href^="#"]::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  box-shadow: 0 0 14px #efd78799;
+  transition:
+    right 0.3s ease,
+    left 0.3s ease;
+}
+header nav a[href^="#"].nav-active {
+  color: var(--gold2);
+}
+header nav a[href^="#"].nav-active::after {
+  right: 0;
+  left: 0;
+}
+
+@media (max-width: 680px) {
+  .hero-copy,
+  .hero-logo-stage {
+    transform: none;
+  }
+  .grid .card.motion-pending {
+    transform: translateY(22px);
+  }
+  .grid .card.motion-pending.motion-visible {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy,
+  .hero-logo-stage,
+  .hero-logo img,
+  .hero-actions a,
+  .analytics .kpis article,
+  .analytics .panel,
+  .radial,
+  .type-track i,
+  .document-track i,
+  .grid .card,
+  .project-gauge,
+  dialog #detailsBody > *,
+  header nav a::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .analytics .kpis article,
+  .analytics .panel,
+  .grid .card,
+  dialog #detailsBody > * {
+    opacity: 1 !important;
+  }
+  .card.image-loading::before {
+    animation: none;
+    background: #f3f0e8;
+  }
+}
+

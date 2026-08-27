@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
@@ -12,31 +12,31 @@
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="interactive.css" />
-    <link rel="stylesheet" href="map-fixes.css" />
-    <link rel="stylesheet" href="about-map.css" />
-    <link rel="stylesheet" href="showcase.css" />
-    <link rel="stylesheet" href="project-status.css" />
-    <link rel="stylesheet" href="team.css" />
-    <link rel="stylesheet" href="closing-cta.css" />
-    <link rel="stylesheet" href="contact.css" />
-    <link rel="stylesheet" href="mobile-header.css" />
-    <link rel="stylesheet" href="menu-scroll.css" />
-    <link rel="stylesheet" href="header-logo.css" />
-    <link rel="stylesheet" href="values-icons.css" />
-    <link rel="stylesheet" href="header-logo.css" />
-    <link rel="stylesheet" href="values-icons.css" />
-    <link rel="stylesheet" href="footer-visibility.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/interactive.css" />
+    <link rel="stylesheet" href="assets/css/map-fixes.css" />
+    <link rel="stylesheet" href="assets/css/about-map.css" />
+    <link rel="stylesheet" href="assets/css/showcase.css" />
+    <link rel="stylesheet" href="assets/css/project-status.css" />
+    <link rel="stylesheet" href="assets/css/team.css" />
+    <link rel="stylesheet" href="assets/css/closing-cta.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/mobile-header.css" />
+    <link rel="stylesheet" href="assets/css/menu-scroll.css" />
+    <link rel="stylesheet" href="assets/css/header-logo.css" />
+    <link rel="stylesheet" href="assets/css/values-icons.css" />
+    <link rel="stylesheet" href="assets/css/header-logo.css" />
+    <link rel="stylesheet" href="assets/css/values-icons.css" />
+    <link rel="stylesheet" href="assets/css/footer-visibility.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       crossorigin />
-  <link rel="stylesheet" href="button-system.css"></head>
+    <link rel="stylesheet" href="assets/css/button-system.css"></head>
   <body>
     <header class="site-header">
       <a class="brand" href="#home" aria-label="مسكن الكيان للمقاولات"><span
-          class="brand-mark"><img src="maskan-logo.png"
+          class="brand-mark"><img src="assets/images/maskan-logo.png"
             alt /></span><span><b>مسكن
             الكيان</b><small>للمقاولات</small></span></a>
       <button
@@ -47,12 +47,13 @@
         ☰
       </button>
       <nav class="site-nav" id="siteNav">
-        <a href="index.html" class="is-current">الرئيسية</a><a href="about.html">من نحن</a><a href="services.html">خدماتنا</a><a
-          href="projects.html">مشاريعنا</a><a href="quality.html">الجودة
-          والسلامة</a><a href="team.html">فريق الإدارة</a><a
-          href="partners.html">شركاؤنا وعملاؤنا</a><a
-          href="careers.html">الوظائف</a><a href="quote.html">طلب عرض سعر</a><a
-          href="contact.html" class="nav-cta">تواصل معنا</a>
+        <a href="index.html" class="is-current">الرئيسية</a><a
+          href="pages/about.html">من نحن</a><a href="pages/services.html">خدماتنا</a><a
+          href="pages/projects.html">مشاريعنا</a><a href="pages/quality.html">الجودة
+          والسلامة</a><a href="pages/team.html">فريق الإدارة</a><a
+          href="pages/partners.html">شركاؤنا وعملاؤنا</a><a
+          href="pages/careers.html">الوظائف</a><a href="pages/quote.html">طلب عرض سعر</a><a
+          href="pages/contact.html" class="nav-cta">تواصل معنا</a>
       </nav>
       <button class="nav-backdrop" type="button"
         aria-label="إغلاق القائمة"></button>
@@ -77,7 +78,8 @@
           </div>
         </div>
         <div class="hero-stamp">
-          <img src="maskan-logo.png" alt="شعار مسكن الكيان" /><b>نبني
+          <img src="assets/images/maskan-logo.png"
+            alt="شعار مسكن الكيان" /><b>نبني
             الجودة<br />ونوثق الإنجاز</b>
         </div>
         <div class="hero-foot">
@@ -438,7 +440,7 @@
     </main>
     <footer>
       <a class="brand" href="#home"><span class="brand-mark"><img
-            src="maskan-logo.png" alt /></span><span><b>مسكن
+            src="assets/images/maskan-logo.png" alt /></span><span><b>مسكن
             الكيان</b><small>للمقاولات</small></span></a>
       <p>© 2026 مسكن الكيان للمقاولات. جميع الحقوق محفوظة.</p>
       <a href="#home">العودة للأعلى ↑</a>
@@ -468,14 +470,14 @@
       const sectionLinks = [...nav.querySelectorAll("a[href^='#']")];
       const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { sectionLinks.forEach((link) => link.classList.toggle("is-current", link.getAttribute("href") === "#" + entry.target.id)); } }), { rootMargin: "-35% 0px -55%", threshold: 0 });
       sectionLinks.forEach((link) => { const target = document.querySelector(link.getAttribute("href")); if (target) sectionObserver.observe(target); });
-      const showcaseProjects = [
+      let showcaseProjects = [
         {
           name: "فلل الروضة",
           location: "الرياض - حي الروضة",
           type: "سكني",
           status: "مكتمل",
           code: "106",
-          image: "project-images/p106.webp",
+          image: "assets/images/project-images/p106.webp",
         },
         {
           name: "مقر الشركة",
@@ -483,7 +485,7 @@
           type: "إداري",
           status: "مكتمل",
           code: "—",
-          image: "project-images/head-office.webp",
+          image: "assets/images/project-images/head-office.webp",
         },
         {
           name: "مشروع المعيزيلة",
@@ -491,7 +493,7 @@
           type: "سكني",
           status: "مكتمل",
           code: "—",
-          image: "project-images/al-muaizilah.webp",
+          image: "assets/images/project-images/al-muaizilah.webp",
         },
         {
           name: "الملز بلوك شرقي",
@@ -499,7 +501,7 @@
           type: "تطوير وتنفيذ",
           status: "مكتمل",
           code: "—",
-          image: "project-images/al-malaz-east.webp",
+          image: "assets/images/project-images/al-malaz-east.webp",
         },
         {
           name: "منازل الرمال",
@@ -507,9 +509,20 @@
           type: "سكني",
           status: "مكتمل",
           code: "—",
-          image: "project-images/sand-homes.webp",
+          image: "assets/images/project-images/sand-homes.webp",
         },
       ];
+      try {
+        const savedProjects = JSON.parse(localStorage.getItem("maskanProjectsV1") || "null");
+        if (Array.isArray(savedProjects) && savedProjects.length) {
+          showcaseProjects = savedProjects.filter((project) => project.name).map((project) => ({
+            ...project,
+            image: project.image || "assets/images/project-images/head-office.webp",
+          }));
+        }
+      } catch (error) {
+        console.warn("تعذر تحميل مشاريع لوحة التحكم", error);
+      }
       const showcase = document.querySelector("#projectShowcase"),
         layers = [...document.querySelectorAll(".showcase-image-layer")],
         dots = document.querySelector("#showcaseDots");
@@ -596,10 +609,10 @@
             .scrollIntoView({ behavior: "smooth" }),
         );
       const heroImages = [
-        "project-images/head-office.webp",
-        "project-images/al-muaizilah.webp",
-        "project-images/al-malaz-east.webp",
-        "project-images/sand-homes.webp",
+        "assets/images/project-images/head-office.webp",
+        "assets/images/project-images/al-muaizilah.webp",
+        "assets/images/project-images/al-malaz-east.webp",
+        "assets/images/project-images/sand-homes.webp",
       ];
       let heroImageIndex = 0;
       const heroImage = document.querySelector(".hero-image");

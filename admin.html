@@ -1,215 +1,135 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ã˜Â¥Ã˜Â¯Ã˜Â§Ã˜Â±Ã˜Â©
-    Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â§Ã˜Â±Ã™Å Ã˜Â¹ | Ã™â€¦Ã˜Â³Ã™Æ’Ã™â€  Ã˜Â§Ã™â€žÃ™Æ’Ã™Å Ã˜Â§Ã™â€ </title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .login-error {
-      margin: 0;
-      padding: 10px;
-      background: #fde8e5;
-      color: #a12d26;
-      border-radius: 8px;
-      font-size: 13px
-    }
-
-    .login-error[hidden] {
-      display: none
-    }
-
-    .export-dialog {
-      max-width: 560px;
-      width: calc(100% - 28px);
-      border: 1px solid #d0ad4b;
-      border-radius: 18px;
-      padding: 0;
-      box-shadow: 0 24px 80px #0006
-    }
-
-    .export-dialog::backdrop {
-      background: #0009;
-      backdrop-filter: blur(5px)
-    }
-
-    .export-dialog form {
-      padding: 30px;
-      display: grid;
-      gap: 16px
-    }
-
-    .export-dialog h2 {
-      margin: 0;
-      color: #17140b
-    }
-
-    .export-dialog p {
-      margin: 0;
-      color: #666;
-      line-height: 1.9
-    }
-
-    .export-dialog label {
-      display: grid;
-      gap: 8px;
-      font-weight: 700
-    }
-
-    .export-dialog input {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font: inherit
-    }
-
-    .export-dialog .close {
-      position: absolute;
-      left: 14px;
-      top: 12px;
-      border: 0;
-      background: #f4f1e8;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      font-size: 22px
-    }
-
-    .export-note {
-      padding: 12px 14px;
-      background: #fff8df;
-      border: 1px solid #ead27c;
-      border-radius: 10px;
-      color: #725a0b;
-      font-size: 13px
-    }
-  </style>
-</head>
-
-<body data-mode="admin">
-  <div id="login" class="login">
-    <form><img src="maskan-logo.png" alt>
-      <h1>Ã˜Â¯Ã˜Â®Ã™Ë†Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¯Ã˜Â§Ã˜Â±Ã˜Â©</h1>
-      <p>Ã™â€¦Ã˜Â³Ã™Æ’Ã™â€  Ã˜Â§Ã™â€žÃ™Æ’Ã™Å Ã˜Â§Ã™â€ 
-        Ã™â€žÃ™â€žÃ™â€¦Ã™â€šÃ˜Â§Ã™Ë†Ã™â€žÃ˜Â§Ã˜Âª</p><label>Ã˜Â§Ã˜Â³Ã™â€¦ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â¯Ã™Å Ã˜Â±<input id="username" value="Ali Mohammed"
-          autocomplete="username"></label><label>Ã˜Â±Ã™â€¦Ã˜Â²
-        Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â®Ã™Ë†Ã™â€ž<input id="password" type="password" inputmode="numeric" placeholder="Ã˜Â§Ã™Æ’Ã˜ÂªÃ˜Â¨ 1234"
-          autocomplete="current-password"></label>
-      <p id="loginError" class="login-error" hidden>Ã˜Â±Ã™â€¦Ã˜Â² Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â®Ã™Ë†Ã™â€ž Ã˜ÂºÃ™Å Ã˜Â± Ã˜ÂµÃ˜Â­Ã™Å Ã˜Â­. Ã˜Â§Ã™Æ’Ã˜ÂªÃ˜Â¨
-        1234.</p><button class="primary" type="submit">Ã˜Â¯Ã˜Â®Ã™Ë†Ã™â€ž</button><small>Ã˜Â±Ã™â€¦Ã˜Â²
-        Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â®Ã™Ë†Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â£Ã™Ë†Ã™â€žÃ™Å : 1234</small>
-    </form>
-  </div>
-  <div id="adminApp" hidden>
-    <div class="admin-watermark"><img src="maskan-logo.png" alt></div>
-    <header>
-      <div class="brand header-brand"><span class="header-mark"><img src="maskan-logo.png" alt></span>
-        <div><b>Ã™â€¦Ã˜Â³Ã™Æ’Ã™â€  Ã˜Â§Ã™â€žÃ™Æ’Ã™Å Ã˜Â§Ã™â€ </b><small>Ã™â€žÃ™Ë†Ã˜Â­Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â¥Ã˜Â¯Ã˜Â§Ã˜Â±Ã˜Â© Ã¢â‚¬Â¢ Ali
-            Mohammed</small></div>
-      </div>
-      <nav><a href="index.html">Ã™â€¦Ã™Ë†Ã™â€šÃ˜Â¹
-          Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¶</a><button id="logout" class="outline">Ã˜Â®Ã˜Â±Ã™Ë†Ã˜Â¬</button></nav>
-    </header>
-    <section class="platform-update-strip admin-update-strip" id="adminUpdateStrip" role="status" aria-live="polite">
-      <div class="platform-update-inner">
-        <span class="platform-update-icon" aria-hidden="true">Ã¢â€ Â»</span>
-        <div class="platform-update-copy"><small>Ã˜Â¢Ã˜Â®Ã˜Â± Ã˜ÂªÃ˜Â¹Ã˜Â¯Ã™Å Ã™â€ž Ã™â€¦Ã˜Â­Ã™ÂÃ™Ë†Ã˜Â¸</small><b id="adminLastUpdate">Ã™â€žÃ™â€¦ Ã™Å Ã™ÂÃ˜Â³Ã˜Â¬Ã™â€˜Ã™â€ž Ã˜ÂªÃ˜Â¹Ã˜Â¯Ã™Å Ã™â€ž Ã˜Â¨Ã˜Â¹Ã˜Â¯</b>
-        </div>
-      </div>
-    </section>
-    <main>
-      <section class="company-stats-admin">
-        <div class="company-stats-panel">
-          <div class="title">
-            <div><small>Ã˜Â¨Ã™Å Ã˜Â§Ã™â€ Ã˜Â§Ã˜Âª
-                Ã™Ë†Ã˜Â§Ã˜Â¬Ã™â€¡Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¶</small>
-              <h2>Ã˜Â£Ã˜Â±Ã™â€šÃ˜Â§Ã™â€¦ Ã™Ë†Ã˜Â¥Ã™â€ Ã˜Â¬Ã˜Â§Ã˜Â²Ã˜Â§Ã˜Âª
-                Ã˜Â§Ã™â€žÃ˜Â´Ã˜Â±Ã™Æ’Ã˜Â©</h2>
-            </div>
-          </div>
-          <form id="companyStatsForm" class="company-stats-form">
-            <div class="automatic-stat"><label>Ã˜Â¹Ã˜Â¯Ã˜Â¯
-                Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â§Ã˜Â±Ã™Å Ã˜Â¹</label><b id="adminProjectsCount">0</b></div><label>Ã˜Â³Ã™â€ Ã™Ë†Ã˜Â§Ã˜Âª Ã˜Â§Ã™â€žÃ˜Â®Ã˜Â¨Ã˜Â±Ã˜Â©<input name="experienceYears"
-                type="number" min="0" step="1" placeholder="Ã™â€¦Ã˜Â«Ã˜Â§Ã™â€ž: 12"></label><label>Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â³Ã˜Â§Ã˜Â­Ã˜Â§Ã˜Âª Ã˜Â§Ã™â€žÃ™â€¦Ã™â€ Ã™ÂÃ˜Â°Ã˜Â©
-              (Ã™â€¦Ã‚Â²)<input name="executedArea" type="number" min="0" step="1"
-                placeholder="Ã™â€¦Ã˜Â«Ã˜Â§Ã™â€ž: 250000"></label><label>Ã™â€ Ã˜Â³Ã˜Â¨Ã˜Â© Ã˜Â§Ã™â€žÃ˜Â§Ã™â€žÃ˜ÂªÃ˜Â²Ã˜Â§Ã™â€¦
-              (%)<input name="commitment" type="number" min="0" max="100" step="1"
-                placeholder="Ã™â€¦Ã˜Â«Ã˜Â§Ã™â€ž: 96"></label><button class="primary" type="submit">Ã˜Â­Ã™ÂÃ˜Â¸ Ã˜Â§Ã™â€žÃ˜Â£Ã˜Â±Ã™â€šÃ˜Â§Ã™â€¦</button>
-            <p id="companyStatsFeedback" class="company-stats-feedback" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
-      <section class="projects admin">
-        <div class="title">
-          <div><small>Ã˜Â¥Ã˜Â¯Ã˜Â§Ã˜Â±Ã˜Â©
-              Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜ÂªÃ™Ë†Ã™â€°</small>
-            <h2>Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â§Ã˜Â±Ã™Å Ã˜Â¹</h2>
-          </div><button id="add" class="primary">Ã¯Â¼â€¹ Ã˜Â¥Ã˜Â¶Ã˜Â§Ã™ÂÃ˜Â© Ã™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹</button>
-        </div>
-        <div class="filters"><input id="search" placeholder="Ã˜Â¨Ã˜Â­Ã˜Â«..."><button id="exportHtml" class="primary">Ã˜ÂªÃ˜ÂµÃ˜Â¯Ã™Å Ã˜Â± HTML
-            Ã™â€¦Ã˜Â­Ã˜Â¯Ã˜Â«</button><button id="export" class="outline dark">Ã™â€ Ã˜Â³Ã˜Â®Ã˜Â©
-            Ã˜Â§Ã˜Â­Ã˜ÂªÃ™Å Ã˜Â§Ã˜Â·Ã™Å Ã˜Â©
-            JSON</button><button id="reset" class="danger">Ã˜Â§Ã˜Â³Ã˜ÂªÃ˜Â¹Ã˜Â§Ã˜Â¯Ã˜Â© Ã˜Â¨Ã™Å Ã˜Â§Ã™â€ Ã˜Â§Ã˜Âª
-            Excel</button></div>
-        <div class="grid" id="grid"></div>
-      </section>
-    </main>
-    <dialog id="editor"><button class="close">Ãƒâ€”</button>
-      <form id="editForm">
-        <h2>Ã˜Â¨Ã™Å Ã˜Â§Ã™â€ Ã˜Â§Ã˜Âª
-          Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹</h2><input type="hidden" name="id">
-        <div class="form-grid"><label>Ã˜Â±Ã™â€šÃ™â€¦ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹<input name="code"></label><label>Ã˜Â§Ã˜Â³Ã™â€¦ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹<input name="name"
-              required></label><label>Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â§Ã™â€žÃ™Æ’<input name="owner"></label><label>Ã™â€¦Ã˜Â¯Ã™Å Ã˜Â± Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹<input
-              name="manager"></label><label>Ã˜Â§Ã™â€žÃ™â€¦Ã™Ë†Ã™â€šÃ˜Â¹<input name="location"></label><label>Ã˜Â§Ã™â€žÃ™â€ Ã™Ë†Ã˜Â¹<input
-              name="type"></label><label>Ã˜Â§Ã™â€žÃ˜Â­Ã˜Â§Ã™â€žÃ˜Â©<select name="status">
-              <option>Ã™â€šÃ™Å Ã˜Â¯
-                Ã˜Â§Ã™â€žÃ˜ÂªÃ™â€ Ã™ÂÃ™Å Ã˜Â°</option>
-              <option>Ã™â€¦Ã™Æ’Ã˜ÂªÃ™â€¦Ã™â€ž</option>
-              <option>Ã™â€¦Ã˜ÂªÃ™Ë†Ã™â€šÃ™Â</option>
-            </select></label><label>Ã™â€ Ã˜Â³Ã˜Â¨Ã˜Â©
-            Ã˜Â§Ã™â€žÃ˜Â¥Ã™â€ Ã˜Â¬Ã˜Â§Ã˜Â²<input name="progress" type="number" min="0" max="100"></label><label>Ã˜ÂªÃ˜Â§Ã˜Â±Ã™Å Ã˜Â® Ã˜Â§Ã™â€žÃ˜Â¨Ã˜Â¯Ã˜Â§Ã™Å Ã˜Â©<input
-              name="startDate"></label><label>Ã˜ÂªÃ˜Â§Ã˜Â±Ã™Å Ã˜Â® Ã˜Â§Ã™â€žÃ™â€ Ã™â€¡Ã˜Â§Ã™Å Ã˜Â©<input name="endDate"></label><label>Ã˜ÂªÃ˜Â§Ã˜Â±Ã™Å Ã˜Â® Ã˜Â§Ã™â€ Ã˜ÂªÃ™â€¡Ã˜Â§Ã˜Â¡ Ã˜Â§Ã™â€žÃ˜Â¹Ã™â€šÃ˜Â¯<input
-              name="contractEndDate" type="date"></label><label class="missing-items-field">Ã™â€ Ã™Ë†Ã˜Â§Ã™â€šÃ˜Âµ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹<textarea
-              name="missingItemsText" rows="5" placeholder="Ã˜Â§Ã™Æ’Ã˜ÂªÃ˜Â¨ Ã™Æ’Ã™â€ž Ã™â€ Ã™â€šÃ˜Âµ Ã™ÂÃ™Å  Ã˜Â³Ã˜Â·Ã˜Â± Ã™â€¦Ã˜Â³Ã˜ÂªÃ™â€šÃ™â€žÃ˜Å’ Ã™â€¦Ã˜Â«Ã˜Â§Ã™â€ž:
-Ã˜Â§Ã˜Â¹Ã˜ÂªÃ™â€¦Ã˜Â§Ã˜Â¯ Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â®Ã˜Â·Ã˜Â·Ã˜Â§Ã˜Âª
-Ã˜ÂªÃ˜Â­Ã˜Â¯Ã™Å Ã˜Â« Ã˜Â§Ã™â€žÃ˜Â¬Ã˜Â¯Ã™Ë†Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â²Ã™â€¦Ã™â€ Ã™Å 
-Ã˜Â§Ã˜Â³Ã˜ÂªÃ™Æ’Ã™â€¦Ã˜Â§Ã™â€ž Ã˜Â§Ã™â€žÃ˜Â¶Ã™â€¦Ã˜Â§Ã™â€ Ã˜Â§Ã˜Âª"></textarea><small>Ã˜ÂªÃ˜Â¸Ã™â€¡Ã˜Â± Ã™â€¡Ã˜Â°Ã™â€¡ Ã˜Â§Ã™â€žÃ˜Â¨Ã™â€ Ã™Ë†Ã˜Â¯ Ã˜Â¯Ã˜Â§Ã˜Â®Ã™â€ž Ã˜Â¨Ã˜Â·Ã˜Â§Ã™â€šÃ˜Â© Ã˜ÂªÃ™ÂÃ˜Â§Ã˜ÂµÃ™Å Ã™â€ž
-              Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹.</small></label><label class="file-upload">Ã˜Â¥Ã˜Â¶Ã˜Â§Ã™ÂÃ˜Â© Ã™â€¦Ã™â€žÃ™ÂÃ˜Â§Ã˜Âª
-            Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹<input id="projectFiles" name="projectFiles" type="file" multiple
-              accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.dwg,.dxf,.zip,.rar,image/*"><small>ExcelÃ˜Å’
-              PDFÃ˜Å’ WordÃ˜Å’ DWGÃ˜Å’ Ã˜ÂµÃ™Ë†Ã˜Â± Ã˜Â£Ã™Ë† Ã™â€¦Ã™â€žÃ™ÂÃ˜Â§Ã˜Âª Ã™â€¦Ã˜Â¶Ã˜ÂºÃ™Ë†Ã˜Â·Ã˜Â©</small></label>
-          <div class="current-files"><b>Ã˜Â§Ã™â€žÃ™â€¦Ã™â€žÃ™ÂÃ˜Â§Ã˜Âª Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â±Ã™ÂÃ™â€šÃ˜Â©</b>
-            <div id="currentFiles"></div>
-          </div>
-        </div>
-        <div class="actions"><button class="primary">Ã˜Â­Ã™ÂÃ˜Â¸</button><button type="button" id="delete"
-            class="danger">Ã˜Â­Ã˜Â°Ã™Â</button></div>
-      </form>
-    </dialog>
-    <dialog id="exportDialog" class="export-dialog"><button class="close" type="button">Ãƒâ€”</button>
-      <form id="exportForm">
-        <h2>Ã˜ÂªÃ˜ÂµÃ˜Â¯Ã™Å Ã˜Â± Ã™â€ Ã˜Â³Ã˜Â®Ã˜Â© HTML
-          Ã™â€¦Ã˜Â­Ã˜Â¯Ã˜Â«Ã˜Â©</h2>
-        <p>Ã˜Â³Ã™Å Ã˜ÂªÃ™â€¦ Ã˜Â¥Ã™â€ Ã˜Â´Ã˜Â§Ã˜Â¡ Ã™â€¦Ã™â€žÃ™Â Ã˜Â¹Ã˜Â±Ã˜Â¶ Ã™â€¦Ã˜Â³Ã˜ÂªÃ™â€šÃ™â€ž Ã™Å Ã˜Â­Ã˜ÂªÃ™Ë†Ã™Å  Ã˜Â¹Ã™â€žÃ™â€° Ã˜Â¬Ã™â€¦Ã™Å Ã˜Â¹ Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â¹Ã˜Â¯Ã™Å Ã™â€žÃ˜Â§Ã˜Âª
-          Ã˜Â§Ã™â€žÃ˜Â­Ã˜Â§Ã™â€žÃ™Å Ã˜Â© Ã™Ë†Ã˜Â§Ã™â€žÃ™â€¦Ã™â€žÃ™ÂÃ˜Â§Ã˜Âª Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â±Ã™ÂÃ™Ë†Ã˜Â¹Ã˜Â©Ã˜Å’ Ã™Ë†Ã™Å Ã™â€¦Ã™Æ’Ã™â€  Ã˜Â¥Ã˜Â±Ã˜Â³Ã˜Â§Ã™â€žÃ™â€¡ Ã™Ë†Ã™ÂÃ˜ÂªÃ˜Â­Ã™â€¡ Ã˜Â¹Ã™â€žÃ™â€° Ã˜Â¬Ã™â€¡Ã˜Â§Ã˜Â²
-          Ã˜Â¢Ã˜Â®Ã˜Â±.</p><label>Ã˜Â±Ã™â€šÃ™â€¦ Ã˜Â§Ã™â€žÃ˜Â¥Ã˜ÂµÃ˜Â¯Ã˜Â§Ã˜Â±<input name="version" value="V35.1" required></label><label>Ã˜Â§Ã˜Â³Ã™â€¦ Ã˜Â¢Ã˜Â®Ã˜Â± Ã˜Â´Ã˜Â®Ã˜Âµ Ã™â€šÃ˜Â§Ã™â€¦
-          Ã˜Â¨Ã˜Â§Ã™â€žÃ˜ÂªÃ˜Â¹Ã˜Â¯Ã™Å Ã™â€ž<input name="updatedBy" value="Ali Mohammed" required></label>
-        <div class="export-note">Ã˜ÂªÃ˜Â£Ã™Æ’Ã˜Â¯ Ã™â€¦Ã™â€  Ã˜Â§Ã™â€žÃ˜Â¶Ã˜ÂºÃ˜Â· Ã˜Â¹Ã™â€žÃ™â€° Ã‚Â«Ã˜Â­Ã™ÂÃ˜Â¸Ã‚Â» Ã˜Â¯Ã˜Â§Ã˜Â®Ã™â€ž Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â´Ã˜Â±Ã™Ë†Ã˜Â¹ Ã™â€šÃ˜Â¨Ã™â€ž
-          Ã˜Â§Ã™â€žÃ˜ÂªÃ˜ÂµÃ˜Â¯Ã™Å Ã˜Â±.</div>
-        <div class="actions"><button class="primary" type="submit">Ã˜ÂªÃ™â€ Ã˜Â²Ã™Å Ã™â€ž Ã™â€¦Ã™â€žÃ™Â
-            HTML Ã˜Â§Ã™â€žÃ™â€¦Ã˜Â­Ã˜Â¯Ã˜Â«</button><button class="outline dark" type="button" id="cancelExport">Ã˜Â¥Ã™â€žÃ˜ÂºÃ˜Â§Ã˜Â¡</button></div>
-      </form>
-    </dialog>
-  </div>
-  <script src="project-data.js"></script>
-  <script src="export-template.js"></script>
-  <script src="admin.js"></script>
-</body>
-
-</html>
+    <head><meta charset="utf-8"><meta name="viewport"
+            content="width=device-width,initial-scale=1"><title>لوحة تحكم مسكن
+            الكيان</title><link rel="stylesheet"
+            href="assets/css/styles.css"><link rel="stylesheet"
+            href="assets/css/admin-dashboard.css"></head>
+    <body class="admin-body">
+        <div id="adminLogin" class="admin-login"><form id="loginForm"><div
+                    class="admin-mark">م<span>ك</span></div><p
+                    class="eyebrow">مسكن الكيان للمقاولات</p><h1>لوحة
+                    التحكم</h1><p>تحكم في محتوى الموقع والمشاريع والخدمات من
+                    مكان واحد.</p><label>اسم المستخدم<input id="adminUser"
+                        value="Ali Mohammed" required></label><label>رمز
+                    الدخول<input id="adminPass" type="password"
+                        placeholder="اكتب 1234" required></label><button
+                    class="admin-button gold" type="submit">دخول لوحة التحكم
+                    <span>←</span></button><small
+                    id="loginError"></small></form></div>
+        <div id="dashboard" hidden><header class="admin-topbar"><a
+                    href="index.html" class="admin-brand"><span
+                        class="admin-mark small">م<span>ك</span></span><span><b>مسكن
+                            الكيان</b><small>مركز التحكم
+                            بالموقع</small></span></a><div
+                    class="top-actions"><a href="index.html"
+                        target="_blank">معاينة الموقع ↗</a><button
+                        id="logout">تسجيل الخروج</button></div></header><div
+                class="admin-shell"><aside class="admin-sidebar"><p
+                        class="eyebrow">إدارة المحتوى</p><button
+                        class="tab active" data-tab="overview">◈ <span>نظرة
+                            عامة</span></button><button class="tab"
+                        data-tab="company">✦ <span>الشركة
+                            والتواصل</span></button><button class="tab"
+                        data-tab="pages">▤ <span>صفحات الموقع</span></button><button class="tab"
+                        data-tab="services">▦
+                        <span>الخدمات</span></button><button class="tab"
+                        data-tab="projects">⌂ <span>المشاريع</span></button><div
+                        class="sidebar-note">آخر حفظ<br><b id="lastSaved">لم يتم
+                            الحفظ بعد</b></div></aside><main
+                    class="admin-main"><section class="tab-panel active"
+                        id="tab-overview"><div class="panel-heading"><div><p
+                                    class="eyebrow">ملخص سريع</p><h1>مرحبًا بك
+                                    في مركز التحكم</h1><p>تابع أرقام الموقع
+                                    وعدّل المحتوى المنشور
+                                    بسهولة.</p></div></div><div
+                            class="overview-grid"><article><span
+                                    class="overview-icon">⌂</span><small>المشاريع</small><strong
+                                    id="overviewProjects">0</strong><a
+                                    href="#projects" data-jump="projects">إدارة
+                                    المشاريع ←</a></article><article><span
+                                    class="overview-icon">▦</span><small>الخدمات</small><strong
+                                    id="overviewServices">0</strong><a
+                                    href="#services" data-jump="services">تعديل
+                                    الخدمات ←</a></article><article><span
+                                    class="overview-icon">✦</span><small>حالة
+                                    الموقع</small><strong>نشط</strong><a
+                                    href="index.html" target="_blank">فتح الموقع
+                                    ↗</a></article></div><div
+                            class="quick-card"><p
+                                class="eyebrow">تذكير</p><h2>اجعل المعلومات
+                                المنشورة محدثة دائمًا</h2><p>راجع حالة المشاريع
+                                وأرقام التواصل والصور قبل كل نشر
+                                جديد.</p><button class="admin-button dark"
+                                data-jump="company">مراجعة بيانات الشركة
+                                <span>←</span></button></div></section>
+                    <section class="tab-panel" id="tab-company"><div
+                            class="panel-heading"><div><p
+                                    class="eyebrow">البيانات
+                                    العامة</p><h1>الشركة والتواصل</h1><p>هذه
+                                    البيانات تظهر في صفحات الموقع وتستخدم كنقطة
+                                    اتصال مع العملاء.</p></div><button
+                                class="admin-button gold save-section"
+                                data-save="company">حفظ
+                                التعديلات</button></div><form
+                            class="editor-card" id="companyForm"><div
+                                class="field-grid"><label>اسم الشركة<input
+                                        name="name"
+                                        required></label><label>الاسم
+                                    بالإنجليزية<input
+                                        name="nameEn"></label><label>وصف
+                                    مختصر<input
+                                        name="tagline"></label><label>رقم
+                                    الهاتف<input name="phone"
+                                        type="tel"></label><label>رقم
+                                    واتساب<input name="whatsapp"
+                                        type="tel"></label><label>البريد
+                                    الإلكتروني<input name="email"
+                                        type="email"></label><label>العنوان<input
+                                        name="address"></label><label>رابط
+                                    Google Maps<input
+                                        name="map"></label><label>Instagram<input
+                                        name="instagram"
+                                        type="url"></label><label>LinkedIn<input
+                                        name="linkedin"
+                                        type="url"></label><label>سنوات
+                                    الخبرة<input name="experience" type="number"
+                                        min="0"></label><label>المناطق التي
+                                    نخدمها<input
+                                        name="areas"></label></div><label>نبذة
+                                الشركة<textarea name="about"
+                                    rows="5"></textarea></label><label>الرؤية
+                                والرسالة<textarea name="vision"
+                                    rows="4"></textarea></label></form></section>
+                                <section class="tab-panel" id="tab-pages"><div class="panel-heading"><div><p class="eyebrow">خريطة الموقع</p><h1>صفحات الموقع</h1><p>اختر الصفحة التي تريد تعديل عنوانها ووصفها، أو افتحها للمعاينة.</p></div></div><div id="pagesList" class="managed-list"></div></section>
+                    <section class="tab-panel" id="tab-services"><div
+                            class="panel-heading"><div><p
+                                    class="eyebrow">المحتوى
+                                    التشغيلي</p><h1>الخدمات</h1><p>أضف الخدمات
+                                    أو عدّل وصفها وترتيبها في
+                                    الصفحات.</p></div><button
+                                class="admin-button gold" id="addService">إضافة
+                                خدمة +</button></div><div id="servicesList"
+                            class="managed-list"></div></section>
+                    <section class="tab-panel" id="tab-projects"><div
+                            class="panel-heading"><div><p class="eyebrow">معرض
+                                    الأعمال</p><h1>المشاريع</h1><p>إدارة أسماء
+                                    المشاريع ومواقعها وأنواعها
+                                    وحالتها.</p></div><button
+                                class="admin-button gold" id="addProject">إضافة
+                                مشروع +</button></div><div
+                            class="project-toolbar"><input id="projectSearch"
+                                placeholder="ابحث باسم المشروع أو الموقع"><span
+                                id="projectCount"></span></div><div
+                            id="projectsList"
+                            class="managed-list"></div></section></main></div></div><dialog
+            id="itemDialog"><form id="itemForm"><button type="button"
+                    class="dialog-close">×</button><h2 id="dialogTitle">إضافة
+                    عنصر</h2><div id="dialogFields"></div><div
+                    class="dialog-actions"><button class="admin-button gold"
+                        type="submit">حفظ التعديلات</button><button
+                        class="admin-button light" type="button"
+                        id="cancelDialog">إلغاء</button></div></form></dialog><script
+            src="assets/js/project-data.js"></script><script
+            src="assets/js/admin-dashboard.js"></script><script src="assets/js/pages-editor.js"></script>
+    </body></html>
