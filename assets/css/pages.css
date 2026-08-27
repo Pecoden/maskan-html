@@ -285,11 +285,9 @@ footer {
 @keyframes pageIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 @media (max-width: 900px) {
