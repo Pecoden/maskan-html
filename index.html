@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/company-metrics.css" />
     <link rel="stylesheet" href="assets/css/interactive.css" />
     <link rel="stylesheet" href="assets/css/map-fixes.css" />
     <link rel="stylesheet" href="assets/css/about-map.css" />
@@ -48,11 +49,14 @@
       </button>
       <nav class="site-nav" id="siteNav">
         <a href="index.html" class="is-current">الرئيسية</a><a
-          href="pages/about.html">من نحن</a><a href="pages/services.html">خدماتنا</a><a
-          href="pages/projects.html">مشاريعنا</a><a href="pages/quality.html">الجودة
+          href="pages/about.html">من نحن</a><a
+          href="pages/services.html">خدماتنا</a><a
+          href="pages/projects.html">مشاريعنا</a><a
+          href="pages/quality.html">الجودة
           والسلامة</a><a href="pages/team.html">فريق الإدارة</a><a
           href="pages/partners.html">شركاؤنا وعملاؤنا</a><a
-          href="pages/careers.html">الوظائف</a><a href="pages/quote.html">طلب عرض سعر</a><a
+          href="pages/careers.html">الوظائف</a><a href="pages/quote.html">طلب
+          عرض سعر</a><a
           href="pages/contact.html" class="nav-cta">تواصل معنا</a>
       </nav>
       <button class="nav-backdrop" type="button"
@@ -171,6 +175,24 @@
             <p>نبدأ بفهم احتياج العميل، ونبقى على تواصل معه كفريق واحد لاتخاذ
               قرارات أسرع وبناء قيمة تستمر بعد التسليم.</p>
           </article>
+        </div>
+      </section>
+      <section class="company-metrics section" aria-labelledby="metricsTitle">
+        <div class="section-label">02 <span>أرقام مسكن الكيان</span></div>
+        <h2 id="metricsTitle">خبرة تُقاس<br /><em>بأثرها.</em></h2>
+        <div class="metrics-grid">
+          <article><strong
+              data-metric="completedProjects">156</strong><span>المشاريع
+              المنفذة</span></article>
+          <article><strong
+              data-metric="activeProjects">45</strong><span>المشاريع تحت
+              الإنشاء</span></article>
+          <article><strong data-metric="executedArea">620k</strong><span>مساحات
+              المشاريع المنفذة</span></article>
+          <article><strong data-metric="activeArea">213k</strong><span>مساحات
+              المشاريع تحت الإنشاء</span></article>
+          <article><strong data-metric="coveredCities">5</strong><span>المدن
+              المغطاة</span></article>
         </div>
       </section>
       <section class="services section dark-section" id="services">
@@ -373,6 +395,7 @@
                 <option>سكني</option>
                 <option>تجاري</option>
                 <option>مقاولات عامة</option>
+                <option>اخري</option>
               </select></label><label>نبذة عن المشروع<textarea
                 rows="4"
                 placeholder="أخبرنا عن مشروعك"></textarea></label><button
@@ -802,5 +825,6 @@
         }),
       );
     </script>
+    <script src="assets/js/metrics-counter.js"></script>
   </body>
 </html>
