@@ -274,6 +274,50 @@ function renderAboutCollections() {
   const panels = aboutCollections.map((collection, index) => `<div class="about-collection-panel${index === 0 ? " is-active" : ""}" data-panel="${collection.key}"><p>${collection.description}</p><div class="about-asset-grid">${collection.assets.map(([label, file]) => { const path = `../assets/files/${collection.folder}/${encodeURIComponent(file)}`; return file.toLowerCase().endsWith(".pdf") ? `<a class="about-asset about-document" href="${path}" target="_blank" rel="noopener"><span class="document-mark">PDF</span><strong>${label}</strong><small>فتح الملف</small></a>` : `<button class="about-asset" type="button" data-lightbox-src="${path}" data-lightbox-label="${label}"><img src="${path}" alt="${label}" loading="lazy"><strong>${label}</strong></button>`; }).join("")}</div></div>`).join("");
   return `<section class="about-collections" aria-labelledby="aboutCollectionsTitle"><div class="about-collections-heading"><div><p class="kicker dark">امتداد لعلاقاتنا</p><h2 id="aboutCollectionsTitle">مع من<br><em>نبني الأثر.</em></h2></div><p>نضع الثقة في مكانها الصحيح: داخل شبكة من الشركاء والمعايير والاعتمادات التي ترفع قيمة كل مشروع.</p></div><div class="about-collection-tabs" role="tablist">${tabs}</div><div class="about-collection-panels">${panels}</div></section><dialog class="about-lightbox" aria-label="عرض الشعار"><button type="button" class="about-lightbox-close" aria-label="إغلاق">×</button><img alt=""><p></p></dialog>`;
 }
+const pdfProjectNames = [
+  "شقق حطين 154", "أدوار النخيل 148", "أدوار العقيق 158", "أدوار الملك عبدالعزيز 160", "مكاتب الين", "عمارة النخيل 138", "فلل العقيق 98", "أدوار حطين 132", "شقق حطين 130", "عمائر البندرية", "تلال أرجان", "أرجان النرجس بلوك 10", "أرجان النرجس بلوك 13", "عمارة المعيزلية", "الروضة فلل خاصة", "كدا الإعمار الملز", "المنار 116", "الخبر الشبيلي", "المصيف 144", "الغدير 142", "الغدير 122", "فلل المحمدية 118", "عمارة المحمدية 120", "الحكير الملز الشرقي", "الحكير الملز الغربي", "أدوار جرير 156", "الربوة 2", "الربوة 1", "الريان 150", "جوهرة الرمز", "فلل حطين (فاليرا)", "ستون الندى الرمز", "قرية الأعمال ازدان", "مكاتب حطين رافد", "أنبار الياسمين", "عمارة التعاون 3", "عمارة الازدهار", "فلل التعاون 92", "المغرزات 2", "العقيق 1", "العقيق 2", "المغرزات 3", "فلل الروضة 106", "فلل الملز 108", "الفلاح 112", "العقيق 4", "المرسلات", "الروابي", "عمارة الملك فيصل", "برج العليا", "برج الرمز", "المصيف 146", "فيلا الوادي", "منازل الرمال", "بونساي 6 & 3", "روابي الرصافة شقق", "روابي الرصافة فلل", "أوج 91", "أوج 92", "أوج 93", "أوج 94", "أوج 95", "أوج 96", "أوج 97", "موقع حي العمل", "سديم 79", "سديم 44", "سديم 45", "سديم 78", "الرمال بلوك 49", "الرمال بلوك 52", "الرمال بلوك 56", "مكاتب الملك خالد", "ريا النخيل", "سنام الازدهار", "كالما", "سنام العقيق", "سنام التعاون", "سنام النرجس", "سنام الربيع 52 عمارة", "سنام الربيع 52 دوبلكس", "سنام الربيع 51 دوبلكس", "سنام النزهة عمارة", "سنام النزهة فلل", "مشروع عبر", "ربوة الرمز"
+];
+const pdfCompletedProjectNames = new Set([
+  "فلل العقيق 98", "المنار 116", "الخبر الشبيلي", "فلل المحمدية 118", "عمارة المحمدية 120", "أدوار جرير 156", "الربوة 2", "الربوة 1", "الريان 150", "مكاتب حطين رافد", "عمارة الازدهار", "فلل التعاون 92", "المغرزات 2", "العقيق 1", "العقيق 2", "المغرزات 3", "فلل الروضة 106", "فلل الملز 108", "الفلاح 112", "العقيق 4", "المرسلات", "الروابي", "عمارة الملك فيصل", "أوج 93", "أوج 94", "أوج 96", "أوج 97", "سديم 44", "الرمال بلوك 49", "ريا النخيل", "سنام الازدهار", "سنام العقيق", "سنام التعاون", "سنام النرجس", "سنام الربيع 52 عمارة", "سنام الربيع 52 دوبلكس", "سنام الربيع 51 دوبلكس", "سنام النزهة عمارة", "سنام النزهة فلل"
+]);
+const projectGalleryImages = {
+  "154": "../assets/images/project-images/p154.webp", "148": "../assets/images/project-images/p148.webp", "156": "../assets/images/project-images/p156.webp", "158": "../assets/images/project-images/p158.webp", "150": "../assets/images/project-images/p150.webp", "144": "../assets/images/project-images/p144.webp", "142": "../assets/images/project-images/p142.webp", "138": "../assets/images/project-images/p138.webp", "132": "../assets/images/project-images/p132.webp", "130": "../assets/images/project-images/p130.webp", "128": "../assets/images/project-images/p128.webp", "126": "../assets/images/project-images/p126.webp", "124": "../assets/images/project-images/p124.webp", "122": "../assets/images/project-images/p122.webp", "120": "../assets/images/project-images/p120.webp", "118": "../assets/images/project-images/p118.webp", "116": "../assets/images/project-images/p116.webp", "114": "../assets/images/project-images/p114.webp", "112": "../assets/images/project-images/p112.webp", "110": "../assets/images/project-images/p110.webp", "108": "../assets/images/project-images/p108.webp", "106": "../assets/images/project-images/p106.webp", "104": "../assets/images/project-images/p104.webp", "102": "../assets/images/project-images/p102.webp", "100": "../assets/images/project-images/p100.webp", "98": "../assets/images/project-images/p98.webp", "96": "../assets/images/project-images/p96.webp", "92": "../assets/images/project-images/p92.webp", "90": "../assets/images/project-images/p90.webp", "88": "../assets/images/project-images/p88.webp"
+};
+const onlineProjectImages = [
+  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=82",
+  "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=82"
+];
+function renderProjectsGallery() {
+  const saved = typeof MASKAN_PROJECTS !== "undefined" && Array.isArray(MASKAN_PROJECTS) ? MASKAN_PROJECTS : [];
+  const byName = new Map(saved.map((project) => [project.name, project]));
+  const projects = pdfProjectNames.map((name, index) => ({
+    ...(byName.get(name) || {}),
+    name,
+    id: byName.get(name)?.id || `pdf-${index + 1}`,
+    location: byName.get(name)?.location || "الرياض",
+    owner: byName.get(name)?.owner || "شركة مسكن الكيان العقارية",
+    status: pdfCompletedProjectNames.has(name) ? "مكتمل" : "قيد التنفيذ",
+    type: byName.get(name)?.type || "تنفيذ وتطوير",
+    progress: byName.get(name)?.progress ?? 0,
+  }));
+  const statuses = [...new Set(projects.map((project) => project.status))];
+  const types = [...new Set(projects.map((project) => project.type))];
+  const card = (project, index) => {
+    const code = String(project.code || project.name.match(/\d+/)?.[0] || "").replace(/\D/g, "");
+    const image = onlineProjectImages[index % onlineProjectImages.length];
+    const statusClass = project.status === "مكتمل" ? "is-complete" : "is-active";
+    return `<article class="gallery-project-card" data-project-card data-name="${project.name}" data-search="${project.name} ${project.location} ${project.owner} ${project.type}" data-status="${project.status}" data-type="${project.type}" style="--card-image:url('${image}');--delay:${Math.min(index, 10) * 35}ms"><div class="gallery-project-image"><span class="gallery-project-index">${String(index + 1).padStart(2, "0")}</span><span class="gallery-project-status ${statusClass}">${project.status}</span></div><div class="gallery-project-body"><div class="gallery-project-kicker"><span>${project.type}</span><b>${project.code ? `#${project.code}` : "مشروع"}</b></div><h3>${project.name}</h3><p class="gallery-project-location">⌖ ${project.location}</p><div class="gallery-project-meta"><span>${project.owner}</span><span>${Math.max(0, Math.min(100, Number(project.progress) || 0))}%</span></div><div class="gallery-progress"><i style="width:${Math.max(0, Math.min(100, Number(project.progress) || 0))}%"></i></div></div></article>`;
+  };
+  return `<div class="projects-gallery-shell" data-project-gallery><div class="projects-gallery-intro"><div><p class="kicker dark">سجل التنفيذ</p><h2>كل مشروع<br><em>له حكايته.</em></h2></div><p>استعرض مشاريعنا السكنية والتجارية وأعمال التطوير والتنفيذ في واجهة واحدة واضحة، مرتبة حسب الحالة والتخصص والموقع.</p></div><div class="projects-gallery-toolbar"><label class="projects-search"><span aria-hidden="true">⌕</span><input type="search" data-project-search placeholder="ابحث باسم المشروع أو الحي أو المالك" aria-label="البحث في المشاريع"></label><div class="projects-filter-row"><button class="projects-filter is-active" type="button" data-filter-status="all">الكل <b>${projects.length}</b></button>${statuses.map((status) => `<button class="projects-filter" type="button" data-filter-status="${status}">${status} <b>${projects.filter((project) => project.status === status).length}</b></button>`).join("")}<select class="projects-type-filter" data-project-type aria-label="فلترة حسب التخصص"><option value="all">كل التخصصات</option>${types.map((type) => `<option value="${type}">${type}</option>`).join("")}</select></div></div><div class="projects-gallery-summary"><strong data-project-count>${projects.length}</strong><span>مشروعًا في سجل الأعمال</span><i></i><span data-project-note>يعرض الآن كامل القائمة</span></div><div class="projects-gallery-grid" data-project-grid>${projects.map(card).join("")}</div><div class="projects-gallery-empty" data-project-empty hidden><strong>لم نعثر على مشروع مطابق</strong><span>جرّب كلمة بحث مختلفة أو غيّر الفلاتر.</span></div></div>`;
+}
 function renderPage(key) {
   const data = pageData[key];
   document.body.insertAdjacentHTML("afterbegin", sharedHeader());
@@ -285,6 +329,10 @@ function renderPage(key) {
       document
         .querySelector("main .page-blocks")
         .insertAdjacentHTML("beforeend", renderAboutCollections());
+  if (key === "projects") {
+    document.querySelector("main .page-blocks").innerHTML = renderProjectsGallery();
+    document.querySelector("main .page-blocks").classList.add("projects-page-blocks");
+  }
   if (key === "partners") {
     document.querySelector("main .partners-gallery")?.remove();
     document
@@ -328,6 +376,38 @@ function initPageInteractions() {
   document
     .querySelectorAll(".info-block,.page-stats div")
     .forEach((item) => observer.observe(item));
+  const projectGallery = document.querySelector("[data-project-gallery]");
+  if (projectGallery) {
+    const cards = [...projectGallery.querySelectorAll("[data-project-card]")];
+    const search = projectGallery.querySelector("[data-project-search]");
+    const typeFilter = projectGallery.querySelector("[data-project-type]");
+    const count = projectGallery.querySelector("[data-project-count]");
+    const empty = projectGallery.querySelector("[data-project-empty]");
+    let statusFilter = "all";
+    const applyProjectFilters = () => {
+      const query = search.value.trim().toLocaleLowerCase();
+      const type = typeFilter.value;
+      let visible = 0;
+      cards.forEach((card) => {
+        const matchesSearch = !query || card.dataset.search.toLocaleLowerCase().includes(query);
+        const matchesStatus = statusFilter === "all" || card.dataset.status === statusFilter;
+        const matchesType = type === "all" || card.dataset.type === type;
+        const isVisible = matchesSearch && matchesStatus && matchesType;
+        card.hidden = !isVisible;
+        if (isVisible) visible += 1;
+      });
+      count.textContent = visible;
+      empty.hidden = visible > 0;
+      projectGallery.querySelector("[data-project-note]").textContent = visible === cards.length ? "يعرض الآن كامل القائمة" : "نتيجة مطابقة للفلاتر الحالية";
+    };
+    search.addEventListener("input", applyProjectFilters);
+    typeFilter.addEventListener("change", applyProjectFilters);
+    projectGallery.querySelectorAll("[data-filter-status]").forEach((button) => button.addEventListener("click", () => {
+      statusFilter = button.dataset.filterStatus;
+      projectGallery.querySelectorAll("[data-filter-status]").forEach((item) => item.classList.toggle("is-active", item === button));
+      applyProjectFilters();
+    }));
+  }
   document.querySelectorAll(".about-collection-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
       const collection = tab.dataset.collection;
