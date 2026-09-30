@@ -280,21 +280,142 @@ const pdfProjectNames = [
 const pdfCompletedProjectNames = new Set([
   "فلل العقيق 98", "المنار 116", "الخبر الشبيلي", "فلل المحمدية 118", "عمارة المحمدية 120", "أدوار جرير 156", "الربوة 2", "الربوة 1", "الريان 150", "مكاتب حطين رافد", "عمارة الازدهار", "فلل التعاون 92", "المغرزات 2", "العقيق 1", "العقيق 2", "المغرزات 3", "فلل الروضة 106", "فلل الملز 108", "الفلاح 112", "العقيق 4", "المرسلات", "الروابي", "عمارة الملك فيصل", "أوج 93", "أوج 94", "أوج 96", "أوج 97", "سديم 44", "الرمال بلوك 49", "ريا النخيل", "سنام الازدهار", "سنام العقيق", "سنام التعاون", "سنام النرجس", "سنام الربيع 52 عمارة", "سنام الربيع 52 دوبلكس", "سنام الربيع 51 دوبلكس", "سنام النزهة عمارة", "سنام النزهة فلل"
 ]);
-const projectGalleryImages = {
-  "154": "../assets/images/project-images/p154.webp", "148": "../assets/images/project-images/p148.webp", "156": "../assets/images/project-images/p156.webp", "158": "../assets/images/project-images/p158.webp", "150": "../assets/images/project-images/p150.webp", "144": "../assets/images/project-images/p144.webp", "142": "../assets/images/project-images/p142.webp", "138": "../assets/images/project-images/p138.webp", "132": "../assets/images/project-images/p132.webp", "130": "../assets/images/project-images/p130.webp", "128": "../assets/images/project-images/p128.webp", "126": "../assets/images/project-images/p126.webp", "124": "../assets/images/project-images/p124.webp", "122": "../assets/images/project-images/p122.webp", "120": "../assets/images/project-images/p120.webp", "118": "../assets/images/project-images/p118.webp", "116": "../assets/images/project-images/p116.webp", "114": "../assets/images/project-images/p114.webp", "112": "../assets/images/project-images/p112.webp", "110": "../assets/images/project-images/p110.webp", "108": "../assets/images/project-images/p108.webp", "106": "../assets/images/project-images/p106.webp", "104": "../assets/images/project-images/p104.webp", "102": "../assets/images/project-images/p102.webp", "100": "../assets/images/project-images/p100.webp", "98": "../assets/images/project-images/p98.webp", "96": "../assets/images/project-images/p96.webp", "92": "../assets/images/project-images/p92.webp", "90": "../assets/images/project-images/p90.webp", "88": "../assets/images/project-images/p88.webp"
-};
-const onlineProjectImages = [
-  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=82",
-  "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=82"
+const projectSpecialtyOrder = [
+  "سكني",
+  "كهروميكانيكية",
+  "تشطيب كامل",
+  "سباكة وكهرباء",
+  "إداري",
+  "عضم + سباكة وكهرباء",
+  "تجاري",
 ];
+const projectSpecialtiesByName = Object.create(null);
+const normalizeGalleryProjectName = (name) =>
+  String(name)
+    .normalize("NFKD")
+    .replace(/[\u064B-\u065F\u0670]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/[^\p{L}\p{N}]/gu, "")
+    .toLowerCase();
+const registerProjectSpecialties = (specialty, names) =>
+  names.forEach((name) => {
+    projectSpecialtiesByName[normalizeGalleryProjectName(name)] = specialty;
+  });
+registerProjectSpecialties("سكني", [
+  "الربوة 1", "الربوة 2", "الريان 150", "جوهرة الرمز", "ستون الندى الرمز",
+  "أنبار الياسمين", "الحكير الملز الغربي", "المرسلات", "الروابي",
+  "عمارة الملك فيصل", "المصيف 146", "فيلا الوادي", "بونساي 6", "بونساي 3",
+  "بونساي 6 & 3", "رواسي الرصافة شقق", "أوج 91", "أوج 92", "أوج 93",
+  "أوج 94", "أوج 95", "أوج 96", "سديم 44", "سديم 45", "سديم 78", "سديم 79",
+  "ريا النخيل", "سنام الازدهار", "كالما", "التعاون", "سنام التعاون",
+  "سنام النرجس", "سنام الربيع 52 عمارة", "سنام الربيع 52 دوبلكس",
+  "سنام الربيع 51 دوبلكس", "سنام النزهة عمارة", "سنام النزهة فلل", "مشروع عبر",
+  "تلال أرجان", "الروضة فلل خاصة", "كدا الإعمار الملز", "الغدير 142",
+  "الغدير 122", "الحكير الملز الشرقي", "المغرزات", "شقق حطين 154",
+]);
+registerProjectSpecialties("كهروميكانيكية", ["برج الرمز"]);
+registerProjectSpecialties("تشطيب كامل", [
+  "منازل الرمال", "أدوار جرير 156", "فلل حطين (فاليرا)", "عمارة التعاون 3",
+  "عمارة الازدهار", "فلل التعاون 92", "المغرزات 2", "العقيق 1", "العقيق 2",
+  "المغرزات 3", "فلل الروضة 106", "فلل الملز 108", "الفلاح 112", "العقيق 4",
+  "أدوار النخيل 148", "أدوار العقيق 158", "أدوار الملك عبدالعزيز 160",
+  "عمارة النخيل 138", "فلل العقيق 98", "أدوار حطين 132", "شقق حطين 130",
+  "عمائر البندرية", "أرجان النرجس بلوك 10", "أرجان النرجس بلوك 13",
+  "عمارة المعيزلية", "المنار 116", "الخبر الشبيلي", "فلل المحمدية 118",
+  "عمارة المحمدية 120",
+]);
+registerProjectSpecialties("سباكة وكهرباء", [
+  "سنام العقيق", "ربوة الرمز", "أنبار الياسمين - سباكة وكهرباء", "أوج 97",
+  "موقع حي العمل", "الرمال بلوك 49", "الرمال بلوك 52", "الرمال بلوك 56",
+]);
+registerProjectSpecialties("إداري", [
+  "مكاتب حطين رافد", "قرية الأعمال ازدان", "مكاتب الملك خالد", "مكاتب الين",
+]);
+registerProjectSpecialties("عضم + سباكة وكهرباء", [
+  "روابي الرصافة شقق", "روابي الرصافة فلل",
+]);
+registerProjectSpecialties("تجاري", ["برج العليا", "العقيق (3) فلتين تجارية"]);
+
+const projectImagesFolder = new URL(
+  "../assets/images/صور_جميع_المشاريع_مسكن_الكيان/",
+  location.href,
+).href;
+const projectGalleryImageFiles = {
+  "شقق حطين 154": "شقق حطين - 154.webp",
+  "أدوار النخيل 148": "ادوار النخيل (شارع) - 148.webp",
+  "أدوار العقيق 158": "أدوار العقيق - 158.webp",
+  "أدوار الملك عبدالعزيز 160": "ادوار الملك عبدالعزيز - 160.webp",
+  "عمارة النخيل 138": "شقق النخيل - 138.webp",
+  "فلل العقيق 98": "العقيق (3) فلة خاصة - 98.webp",
+  "أدوار حطين 132": "أدوار حطين - 132.webp",
+  "عمائر البندرية": "البندرية - 152.webp",
+  "المنار 116": "فلل المنار - 116.webp",
+  "الخبر الشبيلي": "الخبر الشبيلي - 110.webp",
+  "الغدير 142": "الغدير - 142.webp",
+  "الغدير 122": "مشروع الغدير - 122.webp",
+  "فلل المحمدية 118": "فلل المحمدية (2) - 118.webp",
+  "عمارة المحمدية 120": "المحمدية (3) - 120.webp",
+  "أدوار جرير 156": "ادوار جرير - 156.webp",
+  "الربوة 2": "الربوة (2) - 140.webp",
+  "الربوة 1": "الربوة (1) - 136.webp",
+  "الريان 150": "فلل الريان - 150.webp",
+  "شقق حطين 154": "شقق حطين - 154.webp",
+  "عمارة الازدهار": "الازدهار - 88.webp",
+  "فلل التعاون 92": "فلل التعاون - 92.webp",
+  "المغرزات 2": "المغرزات (2) - 96.webp",
+  "العقيق 1": "شقق العقيق (1) - 100.webp",
+  "العقيق 2": "شقق العقيق (2) - 102.webp",
+  "المغرزات 3": "المغرزات (3) - 104.webp",
+  "فلل الروضة 106": "فلل الروضة - 106.webp",
+  "فلل الملز 108": "فلل الملز - 108.webp",
+  "الفلاح 112": "مشروع الفلاح - 112.webp",
+  "العقيق 4": "العقيق (4) - 114.webp",
+  "المرسلات": "المرسلات - 124.webp",
+  "الروابي": "الروابي - 128.webp",
+  "عمارة الملك فيصل": "عمارة الملك فيصل - 90.webp",
+  "المصيف 144": "المصيف - 144.webp",
+  "المصيف 146": "المصيف - 146.webp",
+  "البندرية": "البندرية - 152.webp",
+  "منازل الرمال": "منازل الرمال - بلك 6 قطع 25- 30.webp",
+  "عمارة المعيزلية": "المعيزيلة السهلي.webp",
+  "الحكير الملز الشرقي": "الملز بلوك شرقي.webp",
+  "الحكير الملز الغربي": "الملز بلوك غربي.webp",
+  "كدا الإعمار الملز": "الملز كدا الاعمار.webp",
+};
+const projectGalleryRelatedImages = {
+  "سكني": [
+    6180743, 11631278, 39485848, 15951714, 11643330, 37977970, 19408975,
+    14851016, 14846410, 18587809, 562199, 20538974, 28537915, 24814754,
+    19901827, 19190343, 17719719, 1320734, 35707771, 18153132, 9308434,
+    7189284, 39796876, 24259314, 14660459, 37536275, 18082446, 38020765,
+  ],
+  "تشطيب كامل": [
+    35419406, 7031622, 3935325, 10847196, 8146330,
+  ],
+  "كهروميكانيكية": [5691588],
+  "سباكة وكهرباء": [
+    6419128, 32588548, 29226620, 8488035, 29274530, 9658236, 3614757,
+  ],
+  "إداري": [
+    7653461, 7511754, 5511098, 9300768,
+  ],
+  "عضم + سباكة وكهرباء": [14546924, 31197870],
+  "تجاري": ["photo-1486406146926-c627a92ad1ab"],
+};
+const projectGalleryFallbackIndexes = Object.create(null);
+const projectGalleryImageFor = (name, specialty) => {
+  const file = projectGalleryImageFiles[name];
+  if (file) return `${projectImagesFolder}${encodeURIComponent(file)}`;
+
+  const images = projectGalleryRelatedImages[specialty] || projectGalleryRelatedImages["سكني"];
+  const index = projectGalleryFallbackIndexes[specialty] || 0;
+  projectGalleryFallbackIndexes[specialty] = index + 1;
+  const photoId = images[index];
+  return typeof photoId === "number"
+    ? `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&cs=tinysrgb&w=900`
+    : `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=900&q=82`;
+};
 function renderProjectsGallery() {
   const saved = typeof MASKAN_PROJECTS !== "undefined" && Array.isArray(MASKAN_PROJECTS) ? MASKAN_PROJECTS : [];
   const byName = new Map(saved.map((project) => [project.name, project]));
@@ -305,16 +426,28 @@ function renderProjectsGallery() {
     location: byName.get(name)?.location || "الرياض",
     owner: byName.get(name)?.owner || "شركة مسكن الكيان العقارية",
     status: pdfCompletedProjectNames.has(name) ? "مكتمل" : "قيد التنفيذ",
-    type: byName.get(name)?.type || "تنفيذ وتطوير",
+    type:
+      projectSpecialtiesByName[normalizeGalleryProjectName(name)] ||
+      byName.get(name)?.type ||
+      "سكني",
     progress: byName.get(name)?.progress ?? 0,
   }));
   const statuses = [...new Set(projects.map((project) => project.status))];
-  const types = [...new Set(projects.map((project) => project.type))];
+  const types = [
+    ...projectSpecialtyOrder.filter((type) =>
+      projects.some((project) => project.type === type),
+    ),
+    ...new Set(
+      projects
+        .map((project) => project.type)
+        .filter((type) => !projectSpecialtyOrder.includes(type)),
+    ),
+  ];
   const card = (project, index) => {
-    const code = String(project.code || project.name.match(/\d+/)?.[0] || "").replace(/\D/g, "");
-    const image = onlineProjectImages[index % onlineProjectImages.length];
+    const image = projectGalleryImageFor(project.name, project.type);
     const statusClass = project.status === "مكتمل" ? "is-complete" : "is-active";
-    return `<article class="gallery-project-card" data-project-card data-name="${project.name}" data-search="${project.name} ${project.location} ${project.owner} ${project.type}" data-status="${project.status}" data-type="${project.type}" style="--card-image:url('${image}');--delay:${Math.min(index, 10) * 35}ms"><div class="gallery-project-image"><span class="gallery-project-index">${String(index + 1).padStart(2, "0")}</span><span class="gallery-project-status ${statusClass}">${project.status}</span></div><div class="gallery-project-body"><div class="gallery-project-kicker"><span>${project.type}</span><b>${project.code ? `#${project.code}` : "مشروع"}</b></div><h3>${project.name}</h3><p class="gallery-project-location">⌖ ${project.location}</p><div class="gallery-project-meta"><span>${project.owner}</span><span>${Math.max(0, Math.min(100, Number(project.progress) || 0))}%</span></div><div class="gallery-progress"><i style="width:${Math.max(0, Math.min(100, Number(project.progress) || 0))}%"></i></div></div></article>`;
+    const imageStyle = image ? `--card-image:url('${image}');` : "";
+    return `<article class="gallery-project-card" data-project-card data-name="${project.name}" data-search="${project.name} ${project.location} ${project.owner} ${project.type}" data-status="${project.status}" data-type="${project.type}" style="${imageStyle}--delay:${Math.min(index, 10) * 35}ms"><div class="gallery-project-image${image ? " has-project-image" : ""}"><span class="gallery-project-index">${String(index + 1).padStart(2, "0")}</span><span class="gallery-project-status ${statusClass}">${project.status}</span></div><div class="gallery-project-body"><div class="gallery-project-kicker"><span>${project.type}</span><b>${project.code ? `#${project.code}` : "مشروع"}</b></div><h3>${project.name}</h3><p class="gallery-project-location">⌖ ${project.location}</p><div class="gallery-project-meta"><span>${project.owner}</span><span>${Math.max(0, Math.min(100, Number(project.progress) || 0))}%</span></div><div class="gallery-progress"><i style="width:${Math.max(0, Math.min(100, Number(project.progress) || 0))}%"></i></div></div></article>`;
   };
   return `<div class="projects-gallery-shell" data-project-gallery><div class="projects-gallery-intro"><div><p class="kicker dark">سجل التنفيذ</p><h2>كل مشروع<br><em>له حكايته.</em></h2></div><p>استعرض مشاريعنا السكنية والتجارية وأعمال التطوير والتنفيذ في واجهة واحدة واضحة، مرتبة حسب الحالة والتخصص والموقع.</p></div><div class="projects-gallery-toolbar"><label class="projects-search"><span aria-hidden="true">⌕</span><input type="search" data-project-search placeholder="ابحث باسم المشروع أو الحي أو المالك" aria-label="البحث في المشاريع"></label><div class="projects-filter-row"><button class="projects-filter is-active" type="button" data-filter-status="all">الكل <b>${projects.length}</b></button>${statuses.map((status) => `<button class="projects-filter" type="button" data-filter-status="${status}">${status} <b>${projects.filter((project) => project.status === status).length}</b></button>`).join("")}<select class="projects-type-filter" data-project-type aria-label="فلترة حسب التخصص"><option value="all">كل التخصصات</option>${types.map((type) => `<option value="${type}">${type}</option>`).join("")}</select></div></div><div class="projects-gallery-summary"><strong data-project-count>${projects.length}</strong><span>مشروعًا في سجل الأعمال</span><i></i><span data-project-note>يعرض الآن كامل القائمة</span></div><div class="projects-gallery-grid" data-project-grid>${projects.map(card).join("")}</div><div class="projects-gallery-empty" data-project-empty hidden><strong>لم نعثر على مشروع مطابق</strong><span>جرّب كلمة بحث مختلفة أو غيّر الفلاتر.</span></div></div>`;
 }
