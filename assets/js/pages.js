@@ -471,6 +471,70 @@ const workbookProjectKeyFor = (name) => {
     normalizedName.startsWith(key),
   ) || normalizedName;
 };
+const galleryProgressSourceRows = [
+  ["شقق حطين 154", "154", "شقق حطين"],
+  ["أدوار النخيل 148", "148", "ادوار النخيل (شارع)"],
+  ["أدوار العقيق 158", "158", "أدوار العقيق"],
+  ["أدوار الملك عبدالعزيز 160", "160", "ادوار الملك عبدالعزيز"],
+  ["عمارة النخيل 138", "138", "شقق النخيل"],
+  ["فلل العقيق 98", "98", "العقيق (3) فلة خاصة"],
+  ["أدوار حطين 132", "132", "أدوار حطين"],
+  ["عمائر البندرية", "152", "البندرية"],
+  ["المنار 116", "116", "فلل المنار"],
+  ["الخبر الشبيلي", "110", "الخبر الشبيلي"],
+  ["الغدير 142", "142", "الغدير"],
+  ["الغدير 122", "122", "مشروع الغدير"],
+  ["فلل المحمدية 118", "118", "فلل المحمدية (2)"],
+  ["عمارة المحمدية 120", "120", "المحمدية (3)"],
+  ["أدوار جرير 156", "156", "ادوار جرير"],
+  ["الربوة 2", "140", "الربوة (2)"],
+  ["الربوة 1", "136", "الربوة (1)"],
+  ["الريان 150", "150", "فلل الريان"],
+  ["عمارة الازدهار", "88", "الازدهار"],
+  ["فلل التعاون 92", "92", "فلل التعاون"],
+  ["المغرزات 2", "96", "المغرزات (2)"],
+  ["العقيق 1", "100", "شقق العقيق (1)"],
+  ["العقيق 2", "102", "شقق العقيق (2)"],
+  ["المغرزات 3", "104", "المغرزات (3)"],
+  ["فلل الروضة 106", "106", "فلل الروضة"],
+  ["فلل الملز 108", "108", "فلل الملز"],
+  ["الفلاح 112", "112", "مشروع الفلاح"],
+  ["العقيق 4", "114", "العقيق (4)"],
+  ["المرسلات", "124", "المرسلات"],
+  ["الروابي", "128", "الروابي"],
+  ["عمارة الملك فيصل", "90", "عمارة الملك فيصل"],
+  ["المصيف 144", "144", "المصيف"],
+  ["المصيف 146", "146", "المصيف"],
+  ["الحكير الملز الشرقي", "", "الملز بلوك شرقي"],
+  ["الحكير الملز الغربي", "", "الملز بلوك غربي"],
+  ["كدا الإعمار الملز", "", "الملز كدا الاعمار"],
+  ["عمارة المعيزلية", "", "المعيزيلة السهلي"],
+  ["منازل الرمال", "", "منازل الرمال - بلك 6 قطع 25- 30"],
+  ["شقق حطين 130", "130", "عمارة حطين"],
+];
+const galleryProgressSources = new Map(
+  galleryProgressSourceRows.map(([galleryName, code, sourceName]) => [
+    normalizeGalleryProjectName(galleryName),
+    { code, sourceName: normalizeGalleryProjectName(sourceName) },
+  ]),
+);
+const projectProgressForGallery = (name, savedProject, savedProjects) => {
+  const source = galleryProgressSources.get(normalizeGalleryProjectName(name));
+  if (source) {
+    const matched = savedProjects.find(
+      (project) =>
+        String(project.code || "") === source.code &&
+        normalizeGalleryProjectName(project.name) === source.sourceName,
+    );
+    if (matched) return matched.progress;
+  }
+  const exactNameMatch = savedProjects.find(
+    (project) =>
+      normalizeGalleryProjectName(project.name) ===
+      normalizeGalleryProjectName(name),
+  );
+  return exactNameMatch?.progress ?? savedProject?.progress ?? 0;
+};
 const projectGalleryFallbackIndexes = Object.create(null);
 const projectGalleryImageFor = (name, specialty) => {
   const file = projectGalleryImageFiles[name];
@@ -502,7 +566,7 @@ function renderProjectsGallery() {
       projectSpecialtiesByName[normalizeGalleryProjectName(name)] ||
       byName.get(name)?.type ||
       "سكني",
-    progress: byName.get(name)?.progress ?? 0,
+    progress: projectProgressForGallery(name, byName.get(name), saved),
     };
   });
   const listedProjectNames = new Set(
@@ -516,7 +580,7 @@ function renderProjectsGallery() {
       location: "الرياض",
       owner: project.owner || "غير محدد",
       status: "قيد التنفيذ",
-      progress: 0,
+      progress: projectProgressForGallery(project.name, null, saved),
     });
   });
   const statuses = [...new Set(projects.map((project) => project.status))];
