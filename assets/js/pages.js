@@ -282,6 +282,7 @@ const pdfCompletedProjectNames = new Set([
 ]);
 const projectSpecialtyOrder = [
   "سكني",
+  "الدفاع المدني",
   "كهروميكانيكية",
   "تشطيب كامل",
   "سباكة وكهرباء",
@@ -403,6 +404,73 @@ const projectGalleryRelatedImages = {
   "عضم + سباكة وكهرباء": [14546924, 31197870],
   "تجاري": ["photo-1486406146926-c627a92ad1ab"],
 };
+projectGalleryRelatedImages["الدفاع المدني"] = [
+  ...projectGalleryRelatedImages["سكني"],
+  ...projectGalleryRelatedImages["تشطيب كامل"],
+];
+const workbookProjectRows = [
+  ["سديم 44", "الرمز"],
+  ["سديم 45", "الرمز"],
+  ["مكين 90", "مكين", "https://maps.app.goo.gl/svPfzB18HxX4qDhy5"],
+  ["مكين 65", "مكين", "https://maps.app.goo.gl/bE7NdB6hzaDYjniXA"],
+  ["سديم 79", "الرمز"],
+  ["مقام 18", "مقام"],
+  ["مشروع جودة الإعمار المشرقية (مكين 83)", "مكين"],
+  ["بونساي 6 النهضة", "الرمز"],
+  ["بونساي 3 النهضة", "الرمز"],
+  ["رصافة الروابي", "الرمز"],
+  ["شموخ العمل حي العمل", "شركة الأرض/ رسن"],
+  ["مكين 86", "مكين"],
+  ["برج العليا", "الرمز"],
+  ["مكين 55", "مكين", "https://maps.app.goo.gl/L32pDhrr4aN1tAH78"],
+  ["مكين 89", "مكين", "https://maps.app.goo.gl/q5pgMKUumhUgNE4N8"],
+  ["مكين 91", "مكين", "https://maps.app.goo.gl/Hc3jeQDWouEHhXzo6"],
+  ["مشروع حي الندى", "الرمز"],
+  ["برج الرمز", "الرمز"],
+  ["درة الملك خالد", "الرمز"],
+  ["شموخ حطين", "شركة الأرض/ رسن"],
+  ["مكين 92", "مكين", "https://maps.app.goo.gl/i1TjkxcVERqJCQFv6"],
+  ["مياسم 2", "مياسم القاسم"],
+  ["مكين 72", "مكين", "https://maps.app.goo.gl/fqjg2NmxfADQYzhv7"],
+  ["مكين 60", "مكين", "https://maps.app.goo.gl/fR5SfXXTMYhSyTC6A"],
+  ["مكين 74 الجبيله", "مكين"],
+  ["مكين 88", "مكين", "https://maps.app.goo.gl/YbU61yKuQh4jNPNh9"],
+  ["مكين 80", "مكين"],
+  ["مكين 71", "مكين", "https://maps.app.goo.gl/WTqTjMXbnfWzEZZVA"],
+  ["انس بن مالك تهوية", "مياسم القاسم"],
+  ["انس بن مالك ترميم", "مياسم القاسم"],
+  ["مقام 17", "مقام"],
+  ["عمارة الملقا", "الرمز"],
+  ["الغدير 142", ""],
+  ["المعيزلية", ""],
+  ["شقق حطين 138", ""],
+  ["شقق حطين 154", ""],
+  ["المصيف 144", ""],
+  ["المصيف 146", ""],
+  ["كدا الاعمار", ""],
+  ["شموخ حي العمل", ""],
+];
+const workbookProjectsByName = new Map(
+  workbookProjectRows.map(([name, owner, mapUrl]) => [
+    normalizeGalleryProjectName(name),
+    { name, owner, mapUrl, type: "الدفاع المدني" },
+  ]),
+);
+const workbookProjectAliases = new Map([
+  [normalizeGalleryProjectName("بونساي 6"), normalizeGalleryProjectName("بونساي 6 النهضة")],
+  [normalizeGalleryProjectName("بونساي 3"), normalizeGalleryProjectName("بونساي 3 النهضة")],
+  [normalizeGalleryProjectName("عمارة المعيزلية"), normalizeGalleryProjectName("المعيزلية")],
+  [normalizeGalleryProjectName("كدا الإعمار الملز"), normalizeGalleryProjectName("كدا الاعمار")],
+  [normalizeGalleryProjectName("موقع حي العمل"), normalizeGalleryProjectName("شموخ العمل حي العمل")],
+]);
+const workbookProjectKeyFor = (name) => {
+  const normalizedName = normalizeGalleryProjectName(name);
+  if (workbookProjectAliases.has(normalizedName))
+    return workbookProjectAliases.get(normalizedName);
+  return [...workbookProjectsByName.keys()].find((key) =>
+    normalizedName.startsWith(key),
+  ) || normalizedName;
+};
 const projectGalleryFallbackIndexes = Object.create(null);
 const projectGalleryImageFor = (name, specialty) => {
   const file = projectGalleryImageFiles[name];
@@ -411,7 +479,7 @@ const projectGalleryImageFor = (name, specialty) => {
   const images = projectGalleryRelatedImages[specialty] || projectGalleryRelatedImages["سكني"];
   const index = projectGalleryFallbackIndexes[specialty] || 0;
   projectGalleryFallbackIndexes[specialty] = index + 1;
-  const photoId = images[index];
+  const photoId = images[index % images.length];
   return typeof photoId === "number"
     ? `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&cs=tinysrgb&w=900`
     : `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=900&q=82`;
@@ -419,19 +487,38 @@ const projectGalleryImageFor = (name, specialty) => {
 function renderProjectsGallery() {
   const saved = typeof MASKAN_PROJECTS !== "undefined" && Array.isArray(MASKAN_PROJECTS) ? MASKAN_PROJECTS : [];
   const byName = new Map(saved.map((project) => [project.name, project]));
-  const projects = pdfProjectNames.map((name, index) => ({
+  const projects = pdfProjectNames.map((name, index) => {
+    const workbookKey = workbookProjectKeyFor(name);
+    const workbookProject = workbookProjectsByName.get(workbookKey);
+    return {
     ...(byName.get(name) || {}),
     name,
     id: byName.get(name)?.id || `pdf-${index + 1}`,
     location: byName.get(name)?.location || "الرياض",
-    owner: byName.get(name)?.owner || "شركة مسكن الكيان العقارية",
+    owner: workbookProject?.owner || byName.get(name)?.owner || "شركة مسكن الكيان العقارية",
     status: pdfCompletedProjectNames.has(name) ? "مكتمل" : "قيد التنفيذ",
     type:
+      workbookProject?.type ||
       projectSpecialtiesByName[normalizeGalleryProjectName(name)] ||
       byName.get(name)?.type ||
       "سكني",
     progress: byName.get(name)?.progress ?? 0,
-  }));
+    };
+  });
+  const listedProjectNames = new Set(
+    projects.map((project) => workbookProjectKeyFor(project.name)),
+  );
+  workbookProjectsByName.forEach((project, normalizedName) => {
+    if (listedProjectNames.has(normalizedName)) return;
+    projects.push({
+      ...project,
+      id: `workbook-${projects.length + 1}`,
+      location: "الرياض",
+      owner: project.owner || "غير محدد",
+      status: "قيد التنفيذ",
+      progress: 0,
+    });
+  });
   const statuses = [...new Set(projects.map((project) => project.status))];
   const types = [
     ...projectSpecialtyOrder.filter((type) =>
