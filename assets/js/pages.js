@@ -22,7 +22,7 @@
         "فريق يجمع الإدارة والفن والتشغيل ليبقى القرار قريبًا من الواقع.",
       ],
       [
-        "↗",
+        "",
         "أثر مستمر",
         "نترك وراءنا أعمالًا متينة وعلاقات مهنية تستمر بعد انتهاء المشروع.",
       ],
@@ -158,7 +158,7 @@
         "نختار شركاءنا على أساس الخبرة والالتزام والقدرة على صناعة قيمة حقيقية.",
       ],
       [
-        "↗",
+        "",
         "الموردون",
         "سلسلة توريد منظمة تحفظ الجودة والوقت وتقلل المخاطر في الموقع.",
       ],
@@ -187,7 +187,7 @@
         "لمن يحب التنظيم، حل التحديات، وتحريك الفرق نحو نتيجة واضحة.",
       ],
       [
-        "↗",
+        "",
         "التطوير والدعم",
         "لمن يضيف قيمة في التخطيط والتواصل وتطوير تجربة العميل.",
       ],
@@ -224,7 +224,7 @@
     cards: [
       ["✦", "مشروع سكني", "فلل، عمائر، وتجديدات مصممة حول احتياجك."],
       ["▦", "مشروع تجاري", "مقرات ومشاريع تجارية بإدارة دقيقة للمراحل."],
-      ["↗", "استشارة أولية", "نساعدك على ترتيب الفكرة قبل بداية التنفيذ."],
+      ["", "استشارة أولية", "نساعدك على ترتيب الفكرة قبل بداية التنفيذ."],
     ],
   },
   projects: {
@@ -253,6 +253,109 @@
     ],
   },
 };
+const serviceSpecialties = [
+  {
+    title: "أعمال الإنشاءات",
+    teaser: "من تجهيز الموقع حتى اكتمال الهيكل.",
+    description:
+      "ننفذ الأعمال الإنشائية من تجهيز الموقع وحتى اكتمال الهيكل، مع متابعة مراحل التنفيذ وتنسيق الأعمال وفق المخططات والمواصفات المعتمدة.",
+    scope: [
+      "تجهيز الموقع والحفر والردم والدمك.",
+      "تنفيذ الأساسات والأعمال الخرسانية والهياكل الإنشائية.",
+      "أعمال المباني والعزل المائي والحراري.",
+      "متابعة الجودة وإجراء الاختبارات والتسليم المرحلي.",
+    ],
+  },
+  {
+    title: "أعمال التشطيبات",
+    teaser: "جودة المواد ودقة التفاصيل النهائية.",
+    description:
+      "ننفذ التشطيبات الداخلية والخارجية لتحويل التصاميم إلى مساحات عملية ومتناسقة، مع الاهتمام بجودة المواد ودقة التفاصيل النهائية.",
+    scope: [
+      "اللياسة والدهانات والكسوات.",
+      "الأرضيات والسيراميك والبورسلان والرخام.",
+      "الأسقف المستعارة والقواطع الجبسية.",
+      "الأبواب والنوافذ وأعمال النجارة.",
+      "تشطيبات الواجهات ومعالجة ملاحظات التسليم.",
+    ],
+  },
+  {
+    title: "أعمال الدفاع المدني",
+    teaser: "أنظمة الحريق والإنذار ومتطلبات السلامة.",
+    description:
+      "ننفذ أنظمة مكافحة الحريق والإنذار ومتطلبات السلامة، وفق المخططات المعتمدة ومتطلبات الجهات المختصة، مع اختبار الأنظمة وتجهيزها للتسليم.",
+    scope: [
+      "شبكات مكافحة الحريق والرش الآلي.",
+      "مضخات الحريق والخزانات وصناديق الخراطيم.",
+      "أنظمة إنذار الحريق والكواشف.",
+      "طفايات الحريق ولوحات مخارج الطوارئ.",
+      "إنارة الطوارئ واختبارات التشغيل.",
+    ],
+  },
+  {
+    title: "أعمال التكييف والتهوية",
+    teaser: "توزيع مناسب للهواء وسهولة التشغيل والصيانة.",
+    description:
+      "ننفذ أنظمة التكييف والتهوية بما يناسب استخدام المبنى، لتحقيق توزيع مناسب للهواء وراحة المستخدمين وسهولة التشغيل والصيانة.",
+    scope: [
+      "تركيب وحدات وأنظمة التكييف.",
+      "مجاري الهواء وملحقاتها وأعمال العزل.",
+      "تمديدات وسيط التبريد وتصريف التكثيف.",
+      "أنظمة الهواء النقي والشفط والتهوية.",
+      "اختبار التشغيل وضبط توزيع الهواء.",
+    ],
+  },
+  {
+    title: "أعمال البنية التحتية",
+    teaser: "شبكات وخدمات الموقع وربطها بالمرافق.",
+    description:
+      "ننفذ شبكات وخدمات الموقع التي تدعم تشغيل المشروع، مع تنسيق مساراتها ومناسيبها وربطها بالمرافق وفق المخططات المعتمدة.",
+    scope: [
+      "شبكات المياه والصرف الصحي وتصريف الأمطار.",
+      "غرف التفتيش والمناهل والخزانات.",
+      "مسارات الخدمات والقنوات الأرضية.",
+      "أعمال الطرق والأرصفة والإنترلوك.",
+      "اختبار الشبكات وإعادة تأهيل الأسطح بعد التنفيذ.",
+    ],
+  },
+  {
+    title: "أعمال الكهرباء",
+    teaser: "تمديدات كهربائية منسقة وآمنة قبل التشغيل.",
+    description:
+      "ننفذ التمديدات والأنظمة الكهربائية للمباني، مع تنسيق مواقعها مع الأعمال المعمارية والميكانيكية والتحقق من سلامتها قبل التشغيل.",
+    scope: [
+      "تمديدات القوى والإنارة والمخارج الكهربائية.",
+      "لوحات التوزيع والكابلات وحواملها.",
+      "أنظمة التأريض والحماية من الصواعق.",
+      "إنارة الطوارئ والإنارة الخارجية.",
+      "اختبارات العزل والتوصيل وتشغيل الدوائر.",
+    ],
+  },
+  {
+    title: "أعمال السباكة",
+    teaser: "تغذية المياه والصرف مع سهولة الوصول للصيانة.",
+    description:
+      "ننفذ أنظمة تغذية المياه والصرف الصحي، مع الاهتمام بجودة التمديدات وإحكام الوصلات وإمكانية الوصول إلى نقاط الصيانة.",
+    scope: [
+      "شبكات المياه الباردة والساخنة.",
+      "شبكات الصرف الصحي والتهوية.",
+      "تركيب الأدوات الصحية وملحقاتها.",
+      "تركيب الخزانات والمضخات والسخانات.",
+      "اختبارات الضغط والتسرب والتشغيل.",
+    ],
+  },
+];
+function renderServiceSpecialties() {
+  return `<div class="service-specialty-grid" id="serviceSpecialtyGrid">${serviceSpecialties
+    .map((service, index) => {
+      const detailId = `service-specialty-detail-${index + 1}`;
+      const selected = index === 0;
+      return `<article class="service-specialty-card${selected ? " is-selected" : ""}"><button class="service-specialty-trigger" type="button" data-service-specialty aria-expanded="${selected}" aria-controls="${detailId}"><span class="service-specialty-number">${String(index + 1).padStart(2, "0")}</span><span class="service-specialty-label"><strong>${service.title}</strong><small>${service.teaser}</small></span><span class="service-specialty-toggle" aria-hidden="true">+</span></button><div class="service-specialty-details" id="${detailId}"${selected ? "" : " hidden"}><p>${service.description}</p><h3>نطاق الأعمال</h3><ul>${service.scope
+        .map((item) => `<li>${item}</li>`)
+        .join("")}</ul></div></article>`;
+    })
+    .join("")}</div>`;
+}
 function sharedHeader() {
   return `<header class="site-header page-header"><a class="brand" href="../index.html"><span class="brand-mark"><img src="../assets/images/maskan-logo.png" alt=""></span><span><b>مسكن الكيان</b><small>للمقاولات</small></span></a><button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button><nav class="site-nav"><a href="../index.html">الرئيسية</a><a href="../pages/about.html">من نحن</a><a href="../pages/services.html">خدماتنا</a><a href="../pages/projects.html">مشاريعنا</a><a href="../pages/quality.html">الجودة والسلامة</a><a href="../pages/team.html">فريق الإدارة</a><a href="../pages/partners.html">شركاؤنا وعملاؤنا</a><a href="../pages/careers.html">الوظائف</a><a href="../pages/quote.html">طلب عرض سعر</a><a href="../pages/contact.html" class="nav-cta">تواصل معنا</a></nav><button class="nav-backdrop" type="button" aria-label="إغلاق القائمة"></button></header>`;
 }
@@ -264,7 +367,7 @@ function floatingContact() {
 }
 const aboutCollections = [
   { key: "clients", label: "عملاؤنا وشركاؤنا", folder: "عملائنا", description: "جهات نعتز بالتعاون معها في مشاريع التطوير والتنفيذ.", assets: [
-    ["إنبار للتطوير العقاري", "إنبار للتطوير العقاري.png"], ["أرجان العقارية", "ارجان العقارية.png"], ["ازدان العقارية", "ازدان العقارية.png"], ["أغنى العقارية", "اغنى العقارية.jpg"], ["الحلول الهندسية الذكية", "الحلول الهندسية الذكية.jpeg"], ["الشركة الوطنية للإسكان", "الشركة الوطنية للاسكان.jpg"], ["تشييد حياة", "تشييد حياة.png"], ["رواح للتطوير", "رواح للتطوير.png"], ["زات للتشييد", "زات للتشييد.pdf"], ["سنام العقارية", "سنام العقارية.png"], ["عبر للمقاولات", "شركة عبر للمقاولات.jpg"], ["مسكن ألين العقارية", "شركة مسكن الين العقارية.webp"], ["الرمز العقارية", "شركة-الرمز-العقارية.jpg"], ["صفا", "صفا.jpeg"], ["كالما", "كالما.png"], ["مكين", "مكين.webp"], ["مياسم القاسم", "مياسم القاسم.jpg"],
+    ["الرمز العقارية", "شركة-الرمز-العقارية.jpg"], ["زات للتشييد", "زات للتشييد.jpg"], ["مسكن ألين العقارية", "شركة مسكن الين العقارية.webp"], ["أرجان العقارية", "ارجان العقارية.png"], ["ازدان العقارية", "ازدان العقارية.png"], ["إنبار للتطوير العقاري", "إنبار للتطوير العقاري.png"], ["مكين", "مكين.webp"], ["تشييد حياة", "تشييد حياة.png"], ["عبر للمقاولات", "شركة عبر للمقاولات.jpg"], ["أغنى العقارية", "اغنى العقارية.jpg"], ["الحلول الهندسية الذكية", "الحلول الهندسية الذكية.jpeg"], ["الشركة الوطنية للإسكان", "الشركة الوطنية للاسكان.jpg"], ["رواح للتطوير", "رواح للتطوير.png"], ["سنام العقارية", "سنام العقارية.png"], ["صفا", "صفا.jpeg"], ["كالما", "كالما.png"], ["مياسم القاسم", "مياسم القاسم.jpg"],
   ] },
   { key: "standards", label: "معاييرنا", folder: "معاييرنا", description: "مراجع فنية ومعايير تساعدنا على ضبط جودة التنفيذ.", assets: [["FM Approved", "FM.png"], ["NFPA", "NFPA.png"], ["SMACNA", "SMACNA.webp"], ["UL", "UL.png"], ["الكود السعودي للبناء", "الكود السعودي للبناء.jpg"]] },
   { key: "credentials", label: "اعتماداتنا", folder: "اعتماداتنا", description: "اعتمادات وجهات وطنية تدعم التزامنا بالسلامة والامتثال.", assets: [["وزارة الشؤون البلدية والإسكان", "20231126102511!شعار_وزارة_الشؤون_البلدية.png"], ["NHC", "Nhc.png"], ["الشركة السعودية للكهرباء", "salogos.org-شعار-الكهرباء.svg"], ["الهيئة العامة للأمن الصناعي", "الهيئة-العامة-للأمن-الصناعي-في-السعودية.jpg"], ["سلامة", "سلامة.webp"], ["الدفاع المدني", "شعار الدفاع المدني – SVG.svg"], ["مدن", "مدن-الهيئة-السعودية-للمدن-الصناعية-ومناطق-التقنية-.png"]] },
@@ -613,6 +716,10 @@ function renderPage(key) {
       document
         .querySelector("main .page-blocks")
         .insertAdjacentHTML("beforeend", renderAboutCollections());
+    if (key === "services") {
+      const defaultServices = document.querySelector("main .block-grid");
+      if (defaultServices) defaultServices.outerHTML = renderServiceSpecialties();
+    }
   if (key === "projects") {
     document.querySelector("main .page-blocks").innerHTML = renderProjectsGallery();
     document.querySelector("main .page-blocks").classList.add("projects-page-blocks");
@@ -660,6 +767,23 @@ function initPageInteractions() {
   document
     .querySelectorAll(".info-block,.page-stats div")
     .forEach((item) => observer.observe(item));
+  const serviceSelector = document.querySelector("#serviceSpecialtyGrid");
+  serviceSelector?.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-service-specialty]");
+    if (!trigger || !serviceSelector.contains(trigger)) return;
+    const selectedCard = trigger.closest(".service-specialty-card");
+    serviceSelector.querySelectorAll(".service-specialty-card").forEach((card) => {
+      const selected = card === selectedCard;
+      card.classList.toggle("is-selected", selected);
+      card.querySelector("[data-service-specialty]")?.setAttribute(
+        "aria-expanded",
+        String(selected),
+      );
+      const details = card.querySelector(".service-specialty-details");
+      if (details) details.hidden = !selected;
+    });
+    serviceSelector.prepend(selectedCard);
+  });
   const projectGallery = document.querySelector("[data-project-gallery]");
   if (projectGallery) {
     const cards = [...projectGallery.querySelectorAll("[data-project-card]")];

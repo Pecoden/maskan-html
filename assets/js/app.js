@@ -73,7 +73,7 @@ function dashboard() {
   ]
     .map(
       (x) =>
-        `<article><span>${x[0]}<i>↗</i></span><b>${x[1]}</b><small>${x[2]}</small></article>`,
+        `<article><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`,
     )
     .join("");
   const types = {};
@@ -386,7 +386,7 @@ function show(p) {
       Object.entries(docs)
         .map(
           ([k, v]) =>
-            `<a class="doc" href="${v}" target="_blank"><span>▤</span><div><b>${k}</b><small>فتح المجلد ↗</small></div></a>`,
+            `<a class="doc" href="${v}" target="_blank"><span>▤</span><div><b>${k}</b><small>فتح المجلد</small></div></a>`,
         )
         .join("") || "<p>لا توجد روابط مسجلة.</p>"
     }</div><h3>الملفات المرفوعة من الإدارة</h3><div class="docs uploaded-docs">${uploads.map((f) => `<a class="doc" href="${f.data}" download="${f.name}"><span>⇩</span><div><b>${f.name}</b><small>${formatFileSize(f.size)} • تنزيل الملف</small></div></a>`).join("") || "<p>لا توجد ملفات مرفوعة من الموقع.</p>"}</div>`;

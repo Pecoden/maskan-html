@@ -241,13 +241,25 @@
 .showcase-dots {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 7px;
   flex: 1;
-  flex-wrap: wrap;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.showcase-dots::-webkit-scrollbar {
+  display: none;
+}
+.showcase-dots::-webkit-scrollbar {
+  display: none;
 }
 .showcase-dots button {
   width: 7px;
+  flex: 0 0 7px;
   height: 7px;
   border-radius: 50%;
   border: 0;
@@ -258,6 +270,7 @@
 }
 .showcase-dots button.is-active {
   width: 24px;
+  flex-basis: 24px;
   border-radius: 8px;
   background: #efd787;
 }

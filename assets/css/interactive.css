@@ -317,6 +317,172 @@
   box-shadow: inset 0 -3px #c7a34c;
   transform: translateY(-5px);
 }
+.service-specialty-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1px;
+  border: 1px solid #d4cbb9;
+  background: #d4cbb9;
+}
+.service-specialty-grid article,
+.service-specialty-grid article:hover {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: #faf8f2;
+}
+.service-specialty-grid article.is-selected {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  border: 1px solid #c7a34c;
+  background: #fffdf8;
+  box-shadow: inset 0 0 0 1px #c7a34c;
+  transform: none;
+  animation: service-open 0.35s ease both;
+}
+.service-specialty-trigger {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-content: start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 132px;
+  padding: 24px 22px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: right;
+}
+.service-specialty-trigger:focus-visible {
+  outline: 2px solid #c7a34c;
+  outline-offset: -4px;
+}
+.service-specialty-grid article:not(.is-selected) .service-specialty-trigger:hover,
+.service-specialty-grid article.is-selected .service-specialty-trigger {
+  background: #f4f1e9;
+}
+.service-specialty-number {
+  align-self: start;
+  color: #92752e;
+  font: 700 12px Manrope, sans-serif;
+}
+.service-specialty-label {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+}
+.service-specialty-label strong {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.service-specialty-label small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.service-specialty-toggle {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d8c99f;
+  border-radius: 50%;
+  color: #92752e;
+  font: 500 18px Manrope, sans-serif;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.service-specialty-grid article.is-selected .service-specialty-toggle {
+  background: #f1e7ca;
+  transform: rotate(45deg);
+}
+.service-specialty-details {
+  display: none;
+  align-self: stretch;
+  padding: 24px 30px;
+  border-inline-start: 1px solid var(--line);
+  animation: service-open 0.35s ease both;
+}
+.service-specialty-details[hidden] {
+  display: none !important;
+}
+.service-specialty-grid article.is-selected .service-specialty-details:not([hidden]) {
+  display: block;
+}
+.service-specialty-details > p {
+  margin: 0 0 18px;
+  color: #625e55;
+  font-size: 13px;
+  line-height: 2;
+}
+.service-specialty-details h3 {
+  margin: 0 0 11px;
+  color: #a27d29;
+  font-size: 12px;
+}
+.service-specialty-details ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.service-specialty-details li {
+  position: relative;
+  padding-inline-start: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.service-specialty-details li::before {
+  position: absolute;
+  inset-inline-start: 0;
+  color: #c7a34c;
+  content: "•";
+}
+@keyframes service-open {
+  from { opacity: 0.65; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 900px) {
+  .service-specialty-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 620px) {
+  .service-specialty-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+  }
+  .service-specialty-grid article.is-selected {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .service-specialty-trigger {
+    min-height: 106px;
+    padding: 19px 17px;
+  }
+  .service-specialty-details {
+    padding: 0 20px 22px;
+    border-inline-start: 0;
+  }
+  .service-specialty-details ul {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-specialty-grid article.is-selected,
+  .service-specialty-details {
+    animation: none;
+  }
+  .service-specialty-toggle {
+    transition: none;
+  }
+}
 @keyframes sectionPulse {
   0%,
   100% {
