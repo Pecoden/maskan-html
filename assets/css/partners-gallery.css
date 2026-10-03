@@ -60,16 +60,18 @@
 }
 .home-clients-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 9px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 .home-client-logo {
   display: grid;
   place-items: center;
   min-width: 0;
-  height: 96px;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 5px;
+  height: 132px;
   margin: 0;
-  padding: 12px;
+  padding: 13px 16px 10px;
   border: 1px solid var(--line);
   background: #fffdf8;
 }
@@ -77,10 +79,18 @@
   display: block;
   width: 100%;
   height: 100%;
-  max-width: 150px;
-  max-height: 64px;
+  max-width: 190px;
+  max-height: 82px;
   object-fit: contain;
   mix-blend-mode: multiply;
+}
+.home-client-logo figcaption {
+  max-width: 100%;
+  color: #575348;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
 }
 .logo-tile {
   min-height: 125px;
@@ -160,12 +170,18 @@
     margin-top: 8px;
   }
   .home-clients-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
   .home-client-logo {
-    height: 82px;
-    padding: 9px;
+    height: 116px;
+    padding: 10px 11px 8px;
+  }
+  .home-client-logo img {
+    max-height: 70px;
+  }
+  .home-client-logo figcaption {
+    font-size: 10px;
   }
   .partners-gallery {
     margin-top: 55px;
