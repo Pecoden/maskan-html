@@ -174,7 +174,7 @@
 }
 .showcase-meta {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   position: relative;
   z-index: 1;
@@ -193,9 +193,7 @@
 .showcase-meta b {
   display: block;
   font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 .showcase-meter {
   height: 7px;
@@ -294,7 +292,7 @@
 }
 @media (max-width: 1050px) {
   .showcase-shell {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     min-height: unset;
   }
   .showcase-visual {
@@ -302,6 +300,7 @@
   }
   .showcase-details {
     padding: 32px;
+    min-width: 0;
   }
 }
 @media (max-width: 680px) {
@@ -334,7 +333,7 @@
     padding: 30px 24px;
   }
   .showcase-meta {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
